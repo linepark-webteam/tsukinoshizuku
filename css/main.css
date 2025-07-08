@@ -1,0 +1,104 @@
+/* ========== 基本設定 ========== */
+:root {
+  --primary: #3fa6b5; /* メインブルー */
+  --accent:  #e7b34b; /* ゴールドアクセント */
+  --header-height: 72px; /* 固定ヘッダー高（アンカー補正用） */
+}
+
+body {
+  font-family: "Noto Sans", sans-serif;
+  line-height: 1.7;
+  scroll-behavior: smooth;
+}
+
+/* ===== Hero ===== */
+.hero {
+  position: relative;
+  height: 100vh;
+  background: url("../img/hero.webp") center / cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.hero__content {
+  position: relative;
+  z-index: 1;
+}
+
+.hero__title {
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* ===== Concept Cards ===== */
+.concept-card {
+  text-align: center;
+}
+
+.concept-card__icon {
+  font-size: 2.5rem;
+  color: var(--primary);
+}
+
+/* ===== Menu Cards ===== */
+.menu-card {
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.menu-card:hover {
+  transform: translateY(-4px);
+}
+
+.menu-card__img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+/* ===== Therapist ===== */
+.therapist__img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+}
+
+/* ===== Reviews Carousel ===== */
+.review {
+  background: #fff;
+  border-radius: 8px;
+}
+
+.review__text {
+  font-size: 1rem;
+}
+
+/* ===== Reservation Section ===== */
+.reservation {
+  background: var(--primary);
+  color: #fff;
+}
+
+/* ===== アンカー位置補正 ===== */
+:target::before {
+  content: "";
+  display: block;
+  height: var(--header-height);
+  margin-top: calc(-1 * var(--header-height));
+}
+
+@media (max-width: 991.98px) {
+  .hero {
+    height: 80vh;
+  }
+}
+
