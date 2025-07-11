@@ -1,7 +1,9 @@
-/* ========== 基本設定 ========== */
+/* =====================================
+   基本設定 & 変数
+===================================== */
 :root {
   --primary: #3fa6b5; /* メインブルー */
-  --accent:  #e7b34b; /* ゴールドアクセント */
+  --accent: #e7b34b; /* ゴールドアクセント */
   --header-height: 72px; /* 固定ヘッダー高（アンカー補正用） */
 }
 
@@ -11,84 +13,205 @@ body {
   scroll-behavior: smooth;
 }
 
-/* ===== Hero ===== */
+/* =====================================
+   Utility（u-）
+   ※必要最小限のみ定義
+===================================== */
+.u-text-center {
+  text-align: center;
+}
+.u-bg-light {
+  background: #f8f9fa;
+}
+.u-bg-dark {
+  background: #212529;
+  color: #fff;
+}
+.u-mb-4 {
+  margin-bottom: 1.5rem;
+}
+.u-mb-5 {
+  margin-bottom: 3rem;
+}
+.u-mt-3 {
+  margin-top: 1rem;
+}
+.u-p-4 {
+  padding: 1.5rem;
+}
+.u-py-5 {
+  padding-block: 3rem;
+}
+
+/* =====================================
+   Component: Button
+===================================== */
+.button {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  border-radius: 4px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity 0.3s;
+}
+.button:hover {
+  opacity: 0.8;
+}
+.button--primary {
+  background: var(--primary);
+  color: #fff;
+}
+
+/* =====================================
+   Block: Hero
+===================================== */
 .hero {
   position: relative;
   height: 100vh;
-  background: url("../img/hero.webp") center / cover no-repeat;
+  background: url("../img/hero.webp") center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #fff;
 }
-
 .hero__overlay {
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.45);
 }
-
 .hero__content {
   position: relative;
   z-index: 1;
+  max-width: 720px;
+  text-align: center;
 }
-
 .hero__title {
+  font-size: calc(1.575rem + 3.9vw);
+  font-weight: 700;
+  line-height: 1.2;
   text-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
 }
 
-/* ===== Concept Cards ===== */
-.concept-card {
+/* =====================================
+   Block: Concept
+===================================== */
+.concept {
   text-align: center;
 }
-
-.concept-card__icon {
+.concept__grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+.concept__item {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+.concept__icon {
   font-size: 2.5rem;
   color: var(--primary);
 }
+.concept__item-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
 
-/* ===== Menu Cards ===== */
-.menu-card {
+/* =====================================
+   Block: Menu
+===================================== */
+.menu__grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+.menu__card {
   background: #fff;
   border-radius: 8px;
   overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
   transition: transform 0.3s ease;
 }
-
-.menu-card:hover {
+.menu__card:hover {
   transform: translateY(-4px);
 }
-
-.menu-card__img {
+.menu__img-wrapper {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+}
+.menu__img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 }
+.menu__price {
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
 
-/* ===== Therapist ===== */
-.therapist__img {
+/* =====================================
+   Block: Therapist
+===================================== */
+.therapist__content {
+  text-align: center;
+  max-width: 420px;
+  margin-inline: auto;
+}
+.therapist__img-wrapper {
   width: 180px;
   height: 180px;
+  margin-inline: auto;
+  overflow: hidden;
+  border-radius: 50%;
+}
+.therapist__img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 }
 
-/* ===== Reviews Carousel ===== */
+/* =====================================
+   Block: Reviews
+===================================== */
+.reviews__list {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
 .review {
   background: #fff;
   border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
-
 .review__text {
   font-size: 1rem;
 }
 
-/* ===== Reservation Section ===== */
+/* =====================================
+   Block: Reservation
+===================================== */
 .reservation {
   background: var(--primary);
   color: #fff;
+  text-align: center;
 }
 
-/* ===== アンカー位置補正 ===== */
+/* =====================================
+   Block: Footer
+===================================== */
+.footer {
+  background: #212529;
+  color: #fff;
+  text-align: center;
+  font-size: 0.875rem;
+}
+
+/* =====================================
+   アンカー位置補正
+===================================== */
 :target::before {
   content: "";
   display: block;
@@ -101,4 +224,3 @@ body {
     height: 80vh;
   }
 }
-
