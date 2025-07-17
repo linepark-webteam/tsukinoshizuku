@@ -4,6 +4,9 @@
 :root {
   --primary: #3fa6b5; /* メインブルー */
   --accent: #e7b34b; /* ゴールドアクセント */
+  --bg-dark: #1a2238;
+  --bg-right: #00325c;
+  --f-main: #ffffff;
   --header-height: 72px; /* 固定ヘッダー高（アンカー補正用） */
 }
 
@@ -11,6 +14,8 @@ body {
   font-family: "Noto Sans", sans-serif;
   line-height: 1.7;
   scroll-behavior: smooth;
+  background-color: var(--bg-dark);
+  color: var(--f-main);
 }
 
 /* =====================================
@@ -77,7 +82,7 @@ body {
 .hero__overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.45);
+  /* background: rgba(0, 0, 0, 0.45); */
 }
 .hero__content {
   position: relative;
@@ -93,27 +98,27 @@ body {
 }
 
 /* =====================================
-   Block: Concept
+   Block: Service
 ===================================== */
-.concept {
+.service {
   text-align: center;
 }
-.concept__grid {
+.service__grid {
   display: grid;
   gap: 1.5rem;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
-.concept__item {
+.service__item {
   background: #fff;
   border-radius: 8px;
   padding: 1.5rem;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
-.concept__icon {
+.service__icon {
   font-size: 2.5rem;
   color: var(--primary);
 }
-.concept__item-title {
+.service__item-title {
   font-size: 1.125rem;
   font-weight: 600;
 }
