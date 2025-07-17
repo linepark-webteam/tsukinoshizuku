@@ -98,7 +98,7 @@ body {
   font-size: 1.5rem;
   font-weight: 600;
   color: #fff;
-  gap: 0.75rem;
+  gap: 0.5rem;
 }
 .section-title-deco {
   display: inline-block;
@@ -106,6 +106,9 @@ body {
   height: auto;
 }
 .section-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--f-main);
   margin-bottom: 0;
 }
 
@@ -143,38 +146,8 @@ body {
    Block: Service
 ===================================== */
 .service {
-  color: #fff;
+  color: var(--f-main);
   text-align: center;
-}
-
-.service__header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  color: var(--accent);
-  margin-bottom: 3rem;
-}
-.service__header {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #fff;
-  gap: 0.75rem;
-}
-.service__title-deco {
-  display: inline-block;
-  width: 20px;
-  height: auto;
-}
-
-.service__title {
-  font-size: 2rem;
-  font-weight: 600;
-  color: #fff;
-  margin-bottom: 0;
 }
 
 .service__list {
@@ -235,8 +208,6 @@ body {
 .service__image-wrapper {
   flex: 1 1 50%;
   max-width: 400px;
-  /* border: 4px solid var(--accent);
-  border-radius: 50%; */
   overflow: hidden;
 }
 
@@ -276,13 +247,7 @@ body {
   );
 }
 
-.menu__title {
-  font-size: 2rem;
-  font-weight: 600;
-  color: #fff;
-  text-align: center;
-}
-
+/* 各メニュー間のマージン */
 .menu__section {
   margin-bottom: 3rem;
 }
@@ -336,7 +301,7 @@ body {
   font-weight: 700;
 }
 
-/* 注意書き */
+/* メニュー下テキスト */
 .menu__note {
   color: #fff;
   font-size: 0.875rem;
@@ -353,25 +318,6 @@ body {
     var(--gradient-center) 0%,
     var(--gradient-outer) 100%
   );
-}
-
-.therapist__header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  color: var(--accent);
-  margin-bottom: 3rem;
-}
-
-.therapist__decorator {
-  font-size: 1.5rem;
-}
-
-.therapist__title {
-  font-size: 2rem;
-  font-weight: 600;
-  color: #fff;
 }
 
 /* セラピスト一覧グリッド */
@@ -459,25 +405,6 @@ body {
   );
 }
 
-.salon-info__header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  color: var(--accent);
-  margin-bottom: 3rem;
-}
-
-.salon-info__decorator {
-  font-size: 1.5rem;
-}
-
-.salon-info__title {
-  font-size: 2rem;
-  font-weight: 600;
-  color: #fff;
-}
-
 /* 地図＋詳細の横並びレイアウト */
 .salon-info__content {
   display: flex;
@@ -550,26 +477,9 @@ body {
     var(--gradient-center) 0%,
     var(--gradient-outer) 100%
   );
-  color: #fff;
   text-align: center;
 }
 
-/* ヘッダー装飾 */
-.contact__header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
-.contact__decorator {
-  font-size: 1.5rem;
-  color: var(--accent);
-}
-.contact__title {
-  font-size: 2rem;
-  font-weight: 600;
-}
 
 /* リード文 */
 .contact__lead {
