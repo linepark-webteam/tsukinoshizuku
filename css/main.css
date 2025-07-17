@@ -91,6 +91,10 @@ body {
   width: 10vw;
 }
 
+/* =====================================
+   Component: Section Header
+===================================== */
+
 .section__header {
   display: flex;
   align-items: center;
@@ -100,12 +104,12 @@ body {
   color: #fff;
   gap: 0.5rem;
 }
-.section-title-deco {
+.section__title-deco {
   display: inline-block;
   width: 20px;
   height: auto;
 }
-.section-title {
+.section__title {
   font-size: 2rem;
   font-weight: 600;
   color: var(--f-main);
@@ -334,8 +338,8 @@ body {
 
 /* 画像ラッパー */
 .therapist__img-wrapper {
-  width: 200px;
-  height: 200px;
+  width: 250px;
+  height: 250px;
   margin-inline: auto;
   border-radius: 50%;
   overflow: hidden;
