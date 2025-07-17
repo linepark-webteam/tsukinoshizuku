@@ -222,39 +222,117 @@
         </div>
       </section>
 
+      <div class="sepa">
+        <img src="./img/sepa.svg" alt="" />
+      </div>
+
       <!-- ========== Therapist ========== -->
       <section id="therapist" class="therapist py-5">
         <div class="therapist__inner container">
-          <h2 class="therapist__title mb-5">セラピスト紹介</h2>
-          <div class="therapist__content">
-            <figure class="therapist__img-wrapper">
-              <img
-                src="./img/therapist-01.webp"
-                alt="セラピスト写真"
-                loading="lazy"
-                class="therapist__img"
-              />
-            </figure>
-            <h3 class="therapist__name mt-3">佐藤 かおり</h3>
-            <p class="therapist__bio">
-              国家資格保持。整体・アロマ歴12年。あなたの心身をトータルサポートいたします。
-            </p>
+          <!-- ヘッダー装飾 -->
+          <div class="therapist__header">
+            <i class="therapist__decorator bi-moon"></i>
+            <h2 class="therapist__title">Therapist</h2>
+            <i class="therapist__decorator bi-moon"></i>
+          </div>
+
+          <!-- セラピスト一覧 -->
+          <div class="therapist__grid">
+            <!-- アイテム1 -->
+            <div class="therapist__item">
+              <figure class="therapist__img-wrapper">
+                <img
+                  src="./img/therapist-01.webp"
+                  alt="リンパマッサージ担当セラピスト"
+                  loading="lazy"
+                  class="therapist__img"
+                />
+              </figure>
+              <div class="therapist__info">
+                <h3 class="therapist__name">〇〇（リンパマッサージ担当）</h3>
+                <p class="therapist__credential">○○○○資格 保有</p>
+                <ul class="therapist__experience">
+                  <li>リンパマッサージ実務経験 ○年</li>
+                </ul>
+                <p class="therapist__desc">
+                  身体のクセや姿勢のアンバランスを見極めながら、深い部位から無理なく整える施術を行っています。施術後の「軽さ」をぜひご体感ください。
+                </p>
+              </div>
+            </div>
+
+            <!-- アイテム2 -->
+            <div class="therapist__item">
+              <figure class="therapist__img-wrapper">
+                <img
+                  src="./img/therapist-02.webp"
+                  alt="整体担当セラピスト"
+                  loading="lazy"
+                  class="therapist__img"
+                />
+              </figure>
+              <div class="therapist__info">
+                <h3 class="therapist__name">〇〇（整体担当）</h3>
+                <p class="therapist__credential">○○○○資格 保有</p>
+                <ul class="therapist__experience">
+                  <li>整体施術実務経験 ○年</li>
+                </ul>
+                <p class="therapist__desc">
+                  ひとりひとりのお身体に向き合い、巡りを整えてほぐします。ご不安なことやご希望があれば、いつでもお気軽にお声がけください。
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- ========== Reviews ========== -->
-      <section id="reviews" class="reviews py-5">
-        <div class="reviews__inner container">
-          <h2 class="reviews__title mb-5">お客様の声</h2>
-          <div class="reviews__list">
-            <blockquote class="review">
-              <p class="review__text">
-                施術後は身体が軽く、ぐっすり眠れました！
-              </p>
-              <footer class="review__author">— 30代 女性</footer>
-            </blockquote>
-            <!-- 以降レビューを追加 -->
+      <div class="sepa">
+        <img src="./img/sepa.svg" alt="" />
+      </div>
+
+      <!-- ========== Salon Info ========== -->
+      <section id="salon-info" class="salon-info py-5">
+        <div class="salon-info__inner container">
+          <!-- ヘッダー装飾 -->
+          <div class="salon-info__header">
+            <i class="salon-info__decorator bi-moon"></i>
+            <h2 class="salon-info__title">Salon info</h2>
+            <i class="salon-info__decorator bi-moon"></i>
+          </div>
+
+          <!-- コンテンツ -->
+          <div class="salon-info__content">
+            <!-- 地図 -->
+            <div class="salon-info__map">
+              <!-- 実際は Google Maps iframe などに差し替え -->
+              <img
+                src="./img/map-placeholder.webp"
+                alt="サロン所在地マップ"
+                class="salon-info__map-img"
+                loading="lazy"
+              />
+            </div>
+            <!-- 詳細 -->
+            <div class="salon-info__details">
+              <div class="salon-info__item">
+                <h3 class="salon-info__label">住所</h3>
+                <p class="salon-info__text">
+                  〒220-0023<br />
+                  神奈川県横浜市西区平沼1丁目40-17 モンテベルデ横浜
+                </p>
+              </div>
+              <div class="salon-info__item">
+                <h3 class="salon-info__label">営業時間</h3>
+                <p class="salon-info__text">
+                  営業時間は特に設けておりませんが、<br />
+                  ストレッチは10:00～22:00（21:00最終受付）で対応しています。<br />
+                  お気軽にご相談ください。
+                </p>
+              </div>
+              <div class="salon-info__item">
+                <h3 class="salon-info__label">電話番号</h3>
+                <p class="salon-info__text">080-2952-3908</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>

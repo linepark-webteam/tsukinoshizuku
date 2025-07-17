@@ -159,8 +159,6 @@ body {
   overflow: hidden;
 }
 
-
-
 /* ========= Service Subtitle Decorators ========= */
 .service__subtitle {
   display: inline-flex;
@@ -175,7 +173,7 @@ body {
 
 .service__subtitle-decor {
   display: inline-block;
-  width: 50px;      /* SVG のデザインに合わせて調整 */
+  width: 50px; /* SVG のデザインに合わせて調整 */
   height: auto;
 }
 
@@ -228,7 +226,7 @@ body {
 }
 
 /* スマホ縦並び */
-@media (max-width: 767.98px) {
+@media (max-width: 768px) {
   .service__content,
   .service__item--reverse .service__content {
     flex-direction: column;
@@ -242,6 +240,14 @@ body {
 /* =====================================
    Block: Menu
 ===================================== */
+.menu {
+    background: radial-gradient(
+    ellipse 50% 40% at center,
+    var(--gradient-center) 0%,
+    var(--gradient-outer) 100%
+  );
+}
+
 .menu__title {
   font-size: 2rem;
   font-weight: 600;
@@ -249,8 +255,8 @@ body {
   text-align: center;
 }
 
-/* 各セクション */
 .menu__section {
+
   margin-bottom: 3rem;
 }
 
@@ -267,8 +273,14 @@ body {
 }
 .menu__subtitle-decou {
   display: inline-block;
-  width: 30vw;  /* SVG に合わせて調整 */
+  width: 30vw;
   height: auto;
+  /* margin-top: -10px; */
+}
+@media (max-width: 768px) {
+  .menu__subtitle-decou {
+    width: 45vw;
+  }
 }
 
 /* テーブル風リスト */
@@ -308,23 +320,202 @@ body {
 /* =====================================
    Block: Therapist
 ===================================== */
-.therapist__content {
+.therapist {
+    background: radial-gradient(
+    ellipse 50% 40% at center,
+    var(--gradient-center) 0%,
+    var(--gradient-outer) 100%
+  );
+}
+
+.therapist__header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  color: var(--accent);
+  margin-bottom: 3rem;
+}
+
+.therapist__decorator {
+  font-size: 1.5rem;
+}
+
+.therapist__title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+/* セラピスト一覧グリッド */
+.therapist__grid {
+  display: grid;
+  gap: 3rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+/* 各アイテム */
+.therapist__item {
   text-align: center;
-  max-width: 420px;
-  margin-inline: auto;
 }
+
+/* 画像ラッパー */
 .therapist__img-wrapper {
-  width: 180px;
-  height: 180px;
+  width: 200px;
+  height: 200px;
   margin-inline: auto;
-  overflow: hidden;
+  border: 4px solid var(--accent);
   border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
 }
+
 .therapist__img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
+
+/* 情報エリア */
+.therapist__info {
+  max-width: 320px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+/* 名前・肩書き */
+.therapist__name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.therapist__credential {
+  font-size: 0.875rem;
+  margin-bottom: 0.75rem;
+  color: #ddd;
+}
+
+/* 経験リスト */
+.therapist__experience {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1rem;
+}
+
+.therapist__experience li {
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+/* 説明文 */
+.therapist__desc {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: #eee;
+}
+
+/* レスポンシブ調整 */
+@media (max-width: 768px) {
+  .therapist__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =====================================
+   Block: Salon Info
+===================================== */
+.salon-info {
+    background: radial-gradient(
+    ellipse 50% 40% at center,
+    var(--gradient-center) 0%,
+    var(--gradient-outer) 100%
+  );
+}
+
+.salon-info__header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  color: var(--accent);
+  margin-bottom: 3rem;
+}
+
+.salon-info__decorator {
+  font-size: 1.5rem;
+}
+
+.salon-info__title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+/* 地図＋詳細の横並びレイアウト */
+.salon-info__content {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* 地図 */
+.salon-info__map {
+  flex: 1 1 40%;
+  max-width: 600px;
+  border: 4px solid var(--accent);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.salon-info__map-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* 詳細 */
+.salon-info__details {
+  flex: 1 1 40%;
+  max-width: 400px;
+}
+
+/* 各項目 */
+.salon-info__item + .salon-info__item {
+  margin-top: 2rem;
+}
+
+.salon-info__label {
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  border: 1px solid var(--accent);
+  padding: 0.5rem 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.salon-info__text {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* モバイル縦並び */
+@media (max-width: 768px) {
+  .salon-info__content {
+    flex-direction: column;
+    align-items: center;
+  }
+  .salon-info__map,
+  .salon-info__details {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
+
 
 /* =====================================
    Block: Reviews
