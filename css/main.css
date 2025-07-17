@@ -159,12 +159,34 @@ body {
   overflow: hidden;
 }
 
+
+
+/* ========= Service Subtitle Decorators ========= */
 .service__subtitle {
-  font-size: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem; /* 必要に応じて調整 */
   font-weight: 600;
   color: #fff;
-  text-align: center;
-  margin-bottom: 1.5rem;
+  /* テキストとの隙間を詰める場合は gap を調整 */
+  gap: 0.75rem;
+}
+
+.service__subtitle-decor {
+  display: inline-block;
+  width: 50px;      /* SVG のデザインに合わせて調整 */
+  height: auto;
+}
+
+.service__subtitle-decor--left {
+  /* 左側の画像には右マージンだけで OK */
+  margin-right: 0;
+}
+
+.service__subtitle-decor--right {
+  /* 右側の画像には左マージンだけで OK */
+  margin-left: 0;
 }
 
 .service__content {
@@ -220,34 +242,67 @@ body {
 /* =====================================
    Block: Menu
 ===================================== */
-.menu__grid {
-  display: grid;
-  gap: 1.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+.menu__title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #fff;
+  text-align: center;
 }
-.menu__card {
+
+/* 各セクション */
+.menu__section {
+  margin-bottom: 3rem;
+}
+
+/* H3 Decorated Subtitle */
+.menu__subtitle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 1.5rem;
+}
+.menu__subtitle-decou {
+  display: inline-block;
+  width: 30vw;  /* SVG に合わせて調整 */
+  height: auto;
+}
+
+/* テーブル風リスト */
+.menu__table {
   background: #fff;
-  border-radius: 8px;
+  border: 2px solid var(--accent);
+  border-radius: 4px;
   overflow: hidden;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease;
+  max-width: 600px;
+  margin-inline: auto;
 }
-.menu__card:hover {
-  transform: translateY(-4px);
+.menu__row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  padding: 1rem 1.5rem;
 }
-.menu__img-wrapper {
-  width: 100%;
-  aspect-ratio: 4/3;
-  overflow: hidden;
+.menu__row + .menu__row {
+  border-top: 1px solid var(--accent);
 }
-.menu__img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.menu__duration,
+.menu__price {
+  color: #333;
+  font-size: 1rem;
 }
 .menu__price {
   font-weight: 700;
-  margin-bottom: 0.5rem;
+}
+
+/* 注意書き */
+.menu__note {
+  color: #fff;
+  font-size: 0.875rem;
+  text-align: center;
+  margin-top: 2rem;
 }
 
 /* =====================================

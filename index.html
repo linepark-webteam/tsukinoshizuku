@@ -74,9 +74,17 @@
             <!-- リンパマッサージ -->
             <div class="service__item py-5">
               <h3 class="service__subtitle">
-                <i class="bi-star-fill"></i>
+                <img
+                  src="./img/subtitle-deco-left.svg"
+                  alt=""
+                  class="service__subtitle-decor service__subtitle-decor--left"
+                />
                 リンパマッサージ
-                <i class="bi-star-fill"></i>
+                <img
+                  src="./img/subtitle-deco-right.svg"
+                  alt=""
+                  class="service__subtitle-decor service__subtitle-decor--right"
+                />
               </h3>
               <div class="service__content">
                 <div class="service__image-wrapper">
@@ -109,9 +117,17 @@
             <!-- 施術型ストレッチ（画像を右寄せに）-->
             <div class="service__item service__item--reverse py-5">
               <h3 class="service__subtitle">
-                <i class="bi-star-fill"></i>
+                <img
+                  src="./img/subtitle-deco-left.svg"
+                  alt=""
+                  class="service__subtitle-decor service__subtitle-decor--left"
+                />
                 施術型ストレッチ
-                <i class="bi-star-fill"></i>
+                <img
+                  src="./img/subtitle-deco-right.svg"
+                  alt=""
+                  class="service__subtitle-decor service__subtitle-decor--right"
+                />
               </h3>
               <div class="service__content">
                 <div class="service__image-wrapper">
@@ -149,27 +165,60 @@
       <!-- ========== Menu ========== -->
       <section id="menu" class="menu py-5">
         <div class="menu__inner container">
-          <h2 class="menu__title mb-5">メニュー &amp; 料金</h2>
-          <div class="menu__grid">
-            <article class="menu__card">
-              <figure class="menu__img-wrapper">
-                <img
-                  src="./img/menu-aroma.webp"
-                  alt="アロマボディ90分"
-                  loading="lazy"
-                  class="menu__img"
-                />
-              </figure>
-              <div class="menu__body p-4">
-                <h3 class="menu__card-title">アロマボディ&nbsp;90分</h3>
-                <p class="menu__price mb-2">¥12,000</p>
-                <p class="menu__desc">
-                  全身のリンパを流し、デトックスを促進します。
-                </p>
+          <h2 class="menu__title mb-5">Menu</h2>
+
+          <!-- リンパマッサージ -->
+          <div class="menu__section">
+            <h3 class="menu__subtitle">
+              リンパマッサージ
+              <img
+                src="./img/subtitle-deco-under.svg"
+                alt=""
+                class="menu__subtitle-decou"
+              />
+            </h3>
+            <div class="menu__table">
+              <div class="menu__row">
+                <span class="menu__duration">お試し 60分</span>
+                <span class="menu__price">¥7,000（税込）</span>
               </div>
-            </article>
-            <!-- 以降カードを複製 -->
+              <div class="menu__row">
+                <span class="menu__duration">90分</span>
+                <span class="menu__price">¥10,000（税込）</span>
+              </div>
+              <div class="menu__row">
+                <span class="menu__duration">120分</span>
+                <span class="menu__price">¥12,000（税込）</span>
+              </div>
+            </div>
           </div>
+
+          <!-- 施術型ストレッチ -->
+          <div class="menu__section">
+            <h3 class="menu__subtitle">
+              施術型ストレッチ
+              <img
+                src="./img/subtitle-deco-under.svg"
+                alt=""
+                class="menu__subtitle-decou"
+              />
+            </h3>
+            <div class="menu__table">
+              <div class="menu__row">
+                <span class="menu__duration">60分</span>
+                <span class="menu__price">¥7,000（税込）</span>
+              </div>
+              <div class="menu__row">
+                <span class="menu__duration">90分</span>
+                <span class="menu__price">¥10,000（税込）</span>
+              </div>
+            </div>
+          </div>
+
+          <p class="menu__note">
+            出張での施術も承っております。<br />
+            ※ご希望の場合は、別途出張費を頂戴しております。
+          </p>
         </div>
       </section>
 
