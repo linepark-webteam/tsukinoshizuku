@@ -241,7 +241,7 @@ body {
    Block: Menu
 ===================================== */
 .menu {
-    background: radial-gradient(
+  background: radial-gradient(
     ellipse 50% 40% at center,
     var(--gradient-center) 0%,
     var(--gradient-outer) 100%
@@ -256,7 +256,6 @@ body {
 }
 
 .menu__section {
-
   margin-bottom: 3rem;
 }
 
@@ -321,7 +320,7 @@ body {
    Block: Therapist
 ===================================== */
 .therapist {
-    background: radial-gradient(
+  background: radial-gradient(
     ellipse 50% 40% at center,
     var(--gradient-center) 0%,
     var(--gradient-outer) 100%
@@ -426,7 +425,7 @@ body {
    Block: Salon Info
 ===================================== */
 .salon-info {
-    background: radial-gradient(
+  background: radial-gradient(
     ellipse 50% 40% at center,
     var(--gradient-center) 0%,
     var(--gradient-outer) 100%
@@ -516,32 +515,78 @@ body {
   }
 }
 
-
 /* =====================================
-   Block: Reviews
+   Block: Contact
 ===================================== */
-.reviews__list {
-  display: grid;
-  gap: 1.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-}
-.review {
-  background: #fff;
-  border-radius: 8px;
-  padding: 1.5rem;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-}
-.review__text {
-  font-size: 1rem;
-}
-
-/* =====================================
-   Block: Reservation
-===================================== */
-.reservation {
-  background: var(--primary);
+.contact {
+  background: radial-gradient(
+    ellipse 50% 40% at center,
+    var(--gradient-center) 0%,
+    var(--gradient-outer) 100%
+  );
   color: #fff;
   text-align: center;
+}
+
+/* ヘッダー装飾 */
+.contact__header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.contact__decorator {
+  font-size: 1.5rem;
+  color: var(--accent);
+}
+.contact__title {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+/* リード文 */
+.contact__lead {
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 600px;
+  margin-inline: auto;
+}
+
+/* CTA ボタン */
+.contact__cta {
+  display: inline-block;
+  padding: 0.75rem 3rem;
+  border: 2px solid var(--accent);
+  border-radius: 50px;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  transition: box-shadow 0.3s, background 0.3s;
+}
+.contact__cta:hover {
+  box-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* 注釈リンク */
+.contact__note {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: #fff;
+}
+.contact__note-link {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+/* モバイル調整 */
+@media (max-width: 768px) {
+  .contact__cta {
+    width: 100%;
+    max-width: 320px;
+  }
 }
 
 /* =====================================
