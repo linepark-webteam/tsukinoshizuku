@@ -250,7 +250,7 @@ body {
   position: absolute;
   inset: 0;
   background: url("../img/hamburger-deco.svg") no-repeat center/contain;
-  z-index: 2000;
+  z-index: -1;
 }
 
 /* ■ ３本線 */
