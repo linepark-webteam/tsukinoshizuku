@@ -43,34 +43,37 @@
 
   <body>
     <main>
-<header class="header">
-  <div class="header__inner container">
-    <a href="/" class="header__logo">
-      <img src="./img/logo.svg" alt="月の雫">
-    </a>
+      <header class="header">
+        <div class="header__inner container">
+          <!-- ブランドロゴ＋タグラインをまとめる -->
+          <div class="header__brand">
+            <a href="/" class="header__logo">
+              <img src="./img/logo.webp" alt="月の雫" class="header__logo-img" />
+            </a>
+            <p class="header__tagline">
+              IT・Webなど、長時間同じ姿勢が続く方に。<br />
+              揉まずにほぐし、体を軽くする出張対応のプライベートサロンです。
+            </p>
+          </div>
 
-    <!-- トグルボタン -->
-    <button
-      class="header__toggle"
-      type="button"
-      aria-label="メニューを開く"
-      aria-expanded="false"
-      aria-controls="header-nav"
-    >
-      <!-- 装飾パターンは擬似要素で差し込む -->
-      <span class="header__line"></span>
-      <span class="header__line"></span>
-      <span class="header__line"></span>
-    </button>
-  </div>
+          <!-- トグルボタン -->
+          <button
+            class="header__toggle"
+            type="button"
+            aria-label="メニューを開く"
+            aria-expanded="false"
+            aria-controls="header-nav"
+          >
+            <!-- 装飾パターンは擬似要素で差し込む -->
+            <span class="header__line"></span>
+            <span class="header__line"></span>
+            <span class="header__line"></span>
+          </button>
+        </div>
 
         <!-- ナビゲーション（オフキャンバス） -->
-  <nav
-    class="header__nav"
-    id="header-nav"
-    aria-hidden="true"
-  >
-    <ul class="nav__list">
+        <nav class="header__nav" id="header-nav" aria-hidden="true">
+          <ul class="nav__list">
             <li class="nav__item">
               <a href="#top" class="nav__link">
                 Top<br /><span class="nav__sub">トップページ</span>
