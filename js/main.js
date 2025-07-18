@@ -5,24 +5,35 @@
  * - フッターボタンのフェード表示など
  */
 document.addEventListener("DOMContentLoaded", () => {
-  /* ヘッダー透過制御（必要に応じて実装） */
-  const header = document.querySelector(".site-header");
-  if (header) {
-    window.addEventListener("scroll", () => {
-      header.classList.toggle("solid", window.scrollY > 100);
-    });
+  const toggle = document.querySelector(".header__toggle");
+  const nav    = document.querySelector(".header__nav");
+
+  function openNav() {
+    nav.classList.add("is-open");
+    toggle.classList.add("is-open");
+    toggle.setAttribute("aria-expanded", "true");
+    toggle.setAttribute("aria-label", "メニューを閉じる");
+    nav.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  }
+  function closeNav() {
+    nav.classList.remove("is-open");
+    toggle.classList.remove("is-open");
+    toggle.setAttribute("aria-expanded", "false");
+    toggle.setAttribute("aria-label", "メニューを開く");
+    nav.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
   }
 
-  /* IntersectionObserver で要素フェードイン */
-  const faders = document.querySelectorAll(".fade-up");
-  const options = { threshold: 0.15 };
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("is-visible");
-        observer.unobserve(entry.target);
-      }
-    });
-  }, options);
-  faders.forEach((el) => observer.observe(el));
+  toggle.addEventListener("click", () => {
+    if (toggle.classList.contains("is-open")) closeNav();
+    else                                     openNav();
+  });
+
+  // ESCキーで閉じる
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && nav.classList.contains("is-open")) {
+      closeNav();
+    }
+  });
 });

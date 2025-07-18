@@ -170,33 +170,272 @@ body {
 }
 
 /* =====================================
+   Block: Header
+===================================== */
+.header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: transparent;
+  /* スクロールで背景色切替は main.js で制御すると◎ */
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px; /* ヘッダー高 */
+}
+
+/* ロゴ */
+.header__logo img {
+  height: 40px;
+  width: auto;
+}
+
+/* ■ ヘッダートグル共通 */
+/* ■ Toggle Button を常に前面に */
+.header__toggle {
+  position: relative;
+  z-index: 2000;      /* ナビよりも高く */
+  width: 50px;
+  height: 50px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* ■ 装飾パターン */
+.header__toggle::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("../img/hamburger-deco.svg") no-repeat center/contain;
+  z-index: 2000;
+}
+
+/* ■ ３本線 */
+.header__line {
+  position: absolute;
+  left: 50%;
+  width: 20px;
+  height: 1px;
+  background: var(--f-gold);
+  transform: translateX(-50%);
+  transform-origin: center;
+  transition: 
+    transform 0.4s ease,   /* 回転＋移動に 0.4s */
+    opacity 0.2s ease 0.1s; /* 真ん中の線はフェード */
+  z-index: 1;
+}
+.header__line:nth-child(1) { top: 22px; }
+.header__line:nth-child(2) { top: 25px; }
+.header__line:nth-child(3) { top: 28px; }
+
+/* ■ is-open 時にクロスへアニメーション */
+.header__toggle.is-open .header__line:nth-child(1) {
+  transform: translateX(-50%) translateY(3px) rotate(30deg);
+}
+.header__toggle.is-open .header__line:nth-child(2) {
+  opacity: 0;
+}
+.header__toggle.is-open .header__line:nth-child(3) {
+  transform: translateX(-50%) translateY(-3px) rotate(-30deg);
+}
+
+/* ===== Nav Overlay ===== */
+/* ■ ナビゲーション（右→左に展開） */
+.header__nav {
+  position: fixed;
+  top: 0; right: 0;
+  width: 100vw; height: 100vh;
+  background: #FEFCE5;
+  transform: translateX(100%);           /* 右側に隠す */
+  transition: transform 0.3s ease;
+  overflow-y: auto;
+  padding: 2rem;
+}
+.header__nav.is-open {
+  transform: translateX(0);              /* スライドイン */
+}
+
+/* ■ クローズボタン */
+.header__nav-close {
+  position: absolute;
+  top: 1.5rem; right: 1.5rem;
+  width: 48px; height: 48px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* メニューリスト */
+.nav__list {
+  margin-top: 3rem;
+  list-style: none;
+  padding: 0;
+}
+.nav__item + .nav__item {
+  margin-top: 0.5rem;
+}
+.nav__link {
+  display: inline-block;
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--f-gold);
+  text-decoration: none;
+}
+.nav__sub {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: var(--f-gold);
+  margin-top: -0.25rem;
+}
+
+/* レスポンシブ調整 */
+@media (max-width: 768px) {
+  .nav__link {
+    font-size: 1.75rem;
+  }
+}
+
+
+/* =====================================
    Block: Hero
 ===================================== */
 .hero {
-  position: relative;
-  height: 100vh;
-  background: url("../img/hero.webp") center/cover no-repeat;
+  background: radial-gradient(
+    ellipse at center,
+    var(--gradient-center) 0%,
+    var(--gradient-outer) 100%
+  );
+  color: #fff;
+}
+
+/* ビジュアル部分のレイアウト */
+.hero__visual {
   display: flex;
   align-items: center;
-  justify-content: center;
-  color: var(--f-main);
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
 }
-.hero__overlay {
+
+/* ==== Decor (Brand Circle) ==== */
+.hero__decor {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  margin: auto 0;
+}
+/* 擬似要素で円形SVG装飾を差し込む */
+.hero__decor::before {
+  content: "";
   position: absolute;
   inset: 0;
-  /* background: rgba(0, 0, 0, 0.45); */
+  background: url("../img/hero-circle.svg") no-repeat center/contain;
 }
-.hero__content {
-  position: relative;
-  z-index: 1;
-  max-width: 720px;
+/* 真ん中文字は縦書きで中央配置 */
+.hero__decor-text {
+  font-family: serif, Courier, monospace; /* はんなり明朝？ */
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  font-weight: 600;
+  color: var(--f-main);
+  white-space: nowrap;
+}
+.hero__decor-text__tsuki {
+  font-size: 4.5rem;
+}
+.hero__decor-text__no {
+  font-size: 3rem;
+}
+/* 「雫」は右側に微調整 */
+.hero__decor-text__shizuku {
+  font-size: 4.5rem;
+  display: inline-block;        /* transform を効かせるため */
+  position: relative;           /* 基準を自要素に */
+  /* 下の数値を適宜調整 */
+  transform: translateX(0.25em); /* 右に 0.25em 分ずらす */
+}
+
+/* ==== Catchphrase ==== */
+.hero__tagline {
+  flex: 1 1 auto;
+  font-size: 2.5rem;
+  font-weight: 600;
   text-align: center;
+  max-width: 400px;
+  margin: auto 0;
 }
-.hero__title {
-  font-size: calc(1.575rem + 3.9vw);
-  font-weight: 700;
-  line-height: 1.2;
-  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+
+/* ==== Media (Image) ==== */
+.hero__media {
+  flex: 0 1 45%;
+  max-width: 600px;
+  margin: auto 0;
+  /* 画像の境界をぼかすマスク */
+  position: relative;
+}
+.hero__image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* ==== Description ==== */
+.hero__description {
+  margin-top: 3rem;
+  font-size: 1rem;
+  line-height: 1.6;
+  text-align: center;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ==== Responsive ==== */
+@media (max-width: 992px) {
+  .hero__visual {
+    gap: 1.5rem;
+  }
+  .hero__decor {
+    width: 220px;
+    height: 220px;
+  }
+  .hero__decor-text {
+    font-size: 1.75rem;
+  }
+  .hero__tagline {
+    font-size: 2rem;
+    max-width: 100%;
+  }
+}
+@media (max-width: 768px) {
+  .hero__visual {
+    flex-direction: column;
+    text-align: center;
+  }
+  .hero__decor,
+  .hero__media {
+    order: 0;
+  }
+  .hero__tagline {
+    order: 1;
+    margin: 1.5rem 0;
+  }
+  .hero__media {
+    order: 2;
+  }
+  .hero__media {
+    flex: 1 1 80%;
+    max-width: 80%;
+  }
 }
 
 /* =====================================

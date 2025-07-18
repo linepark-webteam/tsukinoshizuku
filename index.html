@@ -43,15 +43,107 @@
 
   <body>
     <main>
-      <!-- ========== Hero ========== -->
-      <section class="hero">
-        <div class="hero__overlay"></div>
-        <div class="hero__content container">
-          <h1 class="hero__title">触れる、満ちる、整う。</h1>
-          <!-- <p class="hero__catchphrase">
-            アロマと極上ハンドテクニックで心と身体にご褒美を。
-          </p> -->
-          <!-- <a href="#reservation" class="button button--primary hero__button m-3">今すぐ予約</a> -->
+<header class="header">
+  <div class="header__inner container">
+    <a href="/" class="header__logo">
+      <img src="./img/logo.svg" alt="月の雫">
+    </a>
+
+    <!-- トグルボタン -->
+    <button
+      class="header__toggle"
+      type="button"
+      aria-label="メニューを開く"
+      aria-expanded="false"
+      aria-controls="header-nav"
+    >
+      <!-- 装飾パターンは擬似要素で差し込む -->
+      <span class="header__line"></span>
+      <span class="header__line"></span>
+      <span class="header__line"></span>
+    </button>
+  </div>
+
+        <!-- ナビゲーション（オフキャンバス） -->
+  <nav
+    class="header__nav"
+    id="header-nav"
+    aria-hidden="true"
+  >
+    <ul class="nav__list">
+            <li class="nav__item">
+              <a href="#top" class="nav__link">
+                Top<br /><span class="nav__sub">トップページ</span>
+              </a>
+            </li>
+            <li class="nav__item">
+              <a href="#service" class="nav__link">
+                Service<br /><span class="nav__sub">施術について</span>
+              </a>
+            </li>
+            <li class="nav__item">
+              <a href="#menu" class="nav__link">
+                Menu<br /><span class="nav__sub">価格表</span>
+              </a>
+            </li>
+            <li class="nav__item">
+              <a href="#interior" class="nav__link">
+                Interior<br /><span class="nav__sub">内装</span>
+              </a>
+            </li>
+            <li class="nav__item">
+              <a href="#therapist" class="nav__link">
+                Therapiste<br /><span class="nav__sub">セラピストについて</span>
+              </a>
+            </li>
+            <li class="nav__item">
+              <a href="#salon-info" class="nav__link">
+                Salon info<br /><span class="nav__sub">サロン情報</span>
+              </a>
+            </li>
+            <li class="nav__item">
+              <a href="#contact" class="nav__link">
+                Contact<br /><span class="nav__sub">ご予約・お問い合わせ</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <!-- ========== Hero Section ========== -->
+      <section id="hero" class="hero py-5">
+        <div class="hero__inner container">
+          <div class="hero__visual">
+            <!-- 左：ブランドロゴ円形装飾 -->
+            <div class="hero__decor">
+              <!-- 装飾SVGを背景画像で差し込む (CSS で擬似要素化) -->
+              <div class="hero__decor-text">
+                <span class="hero__decor-text__tsuki">月</span
+                ><span class="hero__decor-text__no">の</span
+                ><span class="hero__decor-text__shizuku">雫</span>
+              </div>
+            </div>
+
+            <!-- 中央：キャッチコピー -->
+            <h1 class="hero__tagline">触れる、満ちる、整う。</h1>
+
+            <!-- 右：施術イメージ -->
+            <div class="hero__media">
+              <img
+                src="./img/hero-photo.webp"
+                alt="リラクゼーション施術イメージ"
+                class="hero__image"
+                loading="lazy"
+              />
+            </div>
+          </div>
+
+          <!-- 下：説明文 -->
+          <p class="hero__description">
+            「月の雫」は、ハンドマッサージとストレッチを掛け合わせた二つの手技で、<br />
+            滑りをゆるやかに解き、深いゆらぎへと導くサロンです。<br />
+            それぞれのセラピストが、あなたを内側から整えます。
+          </p>
         </div>
       </section>
 
@@ -81,13 +173,28 @@
                 </div>
                 <div class="service__description">
                   <p>
-                    当店のハンドマッサージは、<span class="c-yellow">特殊な機械を用いて</span>、セラピストの手からお客様のお身体へ、オールハンドで<span class="c-yellow">低周波</span>を流しながら<span class="c-yellow">全身リンパドレナージュ</span>を行います。
+                    当店のハンドマッサージは、<span class="c-yellow"
+                      >特殊な機械を用いて</span
+                    >、セラピストの手からお客様のお身体へ、オールハンドで<span
+                      class="c-yellow"
+                      >低周波</span
+                    >を流しながら<span class="c-yellow"
+                      >全身リンパドレナージュ</span
+                    >を行います。
                   </p>
                   <p>
-                    <span class="c-yellow">自律神経を整える</span>効果が非常に高く、<span class="c-yellow">ぐっすりと深い睡眠</span>をとれる身体に導きます。
+                    <span class="c-yellow">自律神経を整える</span
+                    >効果が非常に高く、<span class="c-yellow"
+                      >ぐっすりと深い睡眠</span
+                    >をとれる身体に導きます。
                   </p>
                   <p>
-                    内臓を強化する効果が高い為、<span class="c-yellow">内臓の疲労による老化を食い止める、<span class="c-yellow bottom-doted">画期的な全身のケア</span></span>をご堪能いただけます。
+                    内臓を強化する効果が高い為、<span class="c-yellow"
+                      >内臓の疲労による老化を食い止める、<span
+                        class="c-yellow bottom-doted"
+                        >画期的な全身のケア</span
+                      ></span
+                    >をご堪能いただけます。
                   </p>
                 </div>
               </div>
@@ -107,13 +214,26 @@
                 </div>
                 <div class="service__description">
                   <p>
-                    施術型なので、普段<span class="c-yellow">自分では伸ばせない筋肉</span>を伸ばすことができます。
+                    施術型なので、普段<span class="c-yellow"
+                      >自分では伸ばせない筋肉</span
+                    >を伸ばすことができます。
                   </p>
                   <p>
-                    <span class="c-yellow">肩こり</span>や<span class="c-yellow">腰のつらさ</span>といった<span class="c-yellow">慢性的なお悩み</span>はもちろん、肩甲骨まわりをしっかりゆるめる<span class="c-yellow">「肩甲骨はがし」</span>など、<span class="c-yellow">一人ひとりの状態に合わせた施術</span>で、滞りをほぐし、巡りを整えていきます。
+                    <span class="c-yellow">肩こり</span>や<span class="c-yellow"
+                      >腰のつらさ</span
+                    >といった<span class="c-yellow">慢性的なお悩み</span
+                    >はもちろん、肩甲骨まわりをしっかりゆるめる<span
+                      class="c-yellow"
+                      >「肩甲骨はがし」</span
+                    >など、<span class="c-yellow"
+                      >一人ひとりの状態に合わせた施術</span
+                    >で、滞りをほぐし、巡りを整えていきます。
                   </p>
                   <p>
-                    <span class="c-yellow bottom-doted">「軽くなった」と感じられるような、</span><span class="c-yellow">ストレッチケア</span>をご体感ください。
+                    <span class="c-yellow bottom-doted"
+                      >「軽くなった」と感じられるような、</span
+                    ><span class="c-yellow">ストレッチケア</span
+                    >をご体感ください。
                   </p>
                 </div>
               </div>
@@ -263,12 +383,15 @@
                 <h3 class="salon-info__label">営業時間</h3>
                 <p class="salon-info__text">
                   営業時間は特に設けておりませんが、<br />
-                  ストレッチは 10:00～22:00（21:00 最終受付）で対応しています。お気軽にご相談ください。
+                  ストレッチは 10:00～22:00（21:00
+                  最終受付）で対応しています。お気軽にご相談ください。
                 </p>
               </div>
               <div class="salon-info__item">
                 <h3 class="salon-info__label">電話番号</h3>
-                <p class="salon-info__text"><a class="tel-number" href="tel:08029523908">080-2952-3908</a></p>
+                <p class="salon-info__text">
+                  <a class="tel-number" href="tel:08029523908">080-2952-3908</a>
+                </p>
               </div>
             </div>
           </div>
