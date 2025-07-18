@@ -288,6 +288,14 @@ body {
   line-height: 1.7;
 }
 
+.service__description .c-yellow {
+  color: var(--f-yellow);
+}
+.service__description .c-yellow.bottom-doted {
+  border-bottom: dotted;
+}
+
+
 /* スマホ縦並び */
 @media (max-width: 768px) {
   .service__content,
