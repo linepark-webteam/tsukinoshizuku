@@ -177,10 +177,6 @@ body {
 /* ヘッダー全体 */
 .header {
   position: static;
-  /* top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000; */
   background: var(--bg-yellow); /* スクロールで色変わるなら main.js 制御 */
 }
 
@@ -196,32 +192,41 @@ body {
 .header__brand {
   display: flex;
   align-items: center;
-  gap: 1.5rem; /* ロゴとタグラインの間隔 */
 }
 
 /* ロゴ */
 .header__logo-img {
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  left: 20px;
   display: block;
-  height: 40px; /* お好みで調整 */
-  width: auto;
+  height: 72px; /* 好みで調整 */
+  width: 72px;
 }
 
 /* タグライン */
 .header__tagline {
-  position: inherit;
-  z-index: 2000;
+  position: relative;
   margin: 0;
+  top: 0;
+  left: 100px;
   font-size: 0.6rem;
   font-weight: 600;
-  line-height: 1;
+  line-height: 1.2;
   color: var(--f-black);
-  white-space: pre-line; /* <br> を生かす */
-  max-width: 400px; /* 長すぎないよう制限 */
+  max-width: 600px; /* 長すぎないよう制限 */
 }
 
-/* モバイルではタグラインを非表示 */
-@media (max-width: 767.98px) {
+@media (max-width: 768px) {
+  .header__logo-img {
+  top: 10px;
+  left: 10px;
+  height: 50px; /* 好みで調整 */
+  width: auto;
+}
   .header__tagline {
+    left: 55px;
     font-size: 0.45rem;
   }
 }
@@ -286,19 +291,23 @@ body {
 /* ■ ナビゲーション（右→左に展開） */
 .header__nav {
   position: fixed;
-  top: 0;
-  right: 0;
-  z-index: 1000;
+  top: 0; left: 0;
   width: 100vw;
   height: 100vh;
-  background: #fefce5;
-  transform: translateX(100%); /* 右側に隠す */
-  transition: transform 0.3s ease;
-  overflow-y: auto;
+  background: #FEFCE5;
+  /* フェード用 */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  z-index: 1000;   /* トグル(2000)より背面に */
   padding: 2rem;
+  overflow-y: auto;
 }
+
+/* is-open クラスでフェードイン */
 .header__nav.is-open {
-  transform: translateX(0); /* スライドイン */
+  opacity: 1;
+  visibility: visible;
 }
 
 /* ■ クローズボタン */
