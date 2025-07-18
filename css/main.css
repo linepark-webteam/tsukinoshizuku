@@ -82,13 +82,22 @@ body {
    Component: Separater
 ===================================== */
 .sepa {
-  width: 100%;
-  display: flex;
-  justify-content: center;
+  /* セパレーター上下の余白 */
+  /* 擬似要素をテキスト中央揃えの幅に */
+  text-align: center;
+  position: relative; /* ::before の配置領域に */
 }
 
-.sepa img {
+/* 擬似要素で SVG を差し込む */
+.sepa::before {
+  content: "";
+  display: inline-block;
+  /* 幅は元の img と同じ比率で 10vw */
   width: 10vw;
+  /* アスペクト比を画像に合わせて指定 (例: 幅200px 高さ20px の場合 ratio 10/1 = 200/20) */
+  /* 実際の sepa.svg のサイズに合わせて調整してください */
+  aspect-ratio: 1 / 1; 
+  background: url("../img/sepa.svg") no-repeat center/contain;
 }
 
 /* =====================================
@@ -115,6 +124,42 @@ body {
   color: var(--f-main);
   margin-bottom: 0;
 }
+
+.section__header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: #fff;
+}
+
+/* 左右に装飾を追加 */
+.section__header::before,
+.section__header::after {
+  content: "";
+  display: inline-block;
+  width: 20px;   /* 元の SVG サイズに合わせて調整 */
+  height: 20px;  /* auto でもOK */
+  background: url("../img/title-deco.svg") no-repeat center/contain;
+}
+
+/* ::before は左、::after は右 */
+.section__header::before {
+  margin-right: 0.5rem;
+}
+.section__header::after {
+  margin-left: 0.5rem;
+}
+
+/* タイトルのスタイルはそのまま */
+.section__title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--f-main);
+  margin-bottom: 0;
+}
+
 
 /* =====================================
    Block: Hero
@@ -166,30 +211,37 @@ body {
 
 /* ========= Service Subtitle Decorators ========= */
 .service__subtitle {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem; /* 必要に応じて調整 */
+  position: relative;         /* 擬似要素の位置指定に必要 */
+  display: inline-block;      /* テキスト幅に合わせる */
+  font-size: 1.5rem;
   font-weight: 600;
   color: #fff;
-  /* テキストとの隙間を詰める場合は gap を調整 */
-  gap: 0.75rem;
+  padding: 0 1rem;            /* 前後に余白を空けて装飾をはみ出させる */
+  text-align: center;
 }
 
-.service__subtitle-decor {
-  display: inline-block;
-  width: 50px; /* SVG のデザインに合わせて調整 */
-  height: auto;
+/* 左側装飾 */
+.service__subtitle::before {
+  content: "";
+  position: absolute;
+  left: 0;                    /* 見出しの左端に合わせる */
+  top: 50%;
+  transform: translate(-100%, -50%); /* 自身の幅だけ左にずらし、垂直中央 */
+  width: 50px;                /* SVG の幅に合わせる */
+  height: 50px;               /* 必要に応じて調整 */
+  background: url("../img/subtitle-deco-left.svg") no-repeat center/contain;
 }
 
-.service__subtitle-decor--left {
-  /* 左側の画像には右マージンだけで OK */
-  margin-right: 0;
-}
-
-.service__subtitle-decor--right {
-  /* 右側の画像には左マージンだけで OK */
-  margin-left: 0;
+/* 右側装飾 */
+.service__subtitle::after {
+  content: "";
+  position: absolute;
+  right: 0;                   /* 見出しの右端に合わせる */
+  top: 50%;
+  transform: translate(100%, -50%);   /* 自身の幅だけ右にずらし、垂直中央 */
+  width: 50px;
+  height: 50px;
+  background: url("../img/subtitle-deco-right.svg") no-repeat center/contain;
 }
 
 .service__content {
@@ -257,7 +309,7 @@ body {
 }
 
 /* H3 Decorated Subtitle */
-.menu__subtitle {
+/* .menu__subtitle {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -266,18 +318,36 @@ body {
   font-weight: 600;
   color: #fff;
   margin-bottom: 1.5rem;
+} */
+/* ========= Service Subtitle Underline ========= */
+.menu__subtitle {
+  position: relative;       /* 擬似要素の基準に */
+  display: inline-block;    /* テキスト幅に合わせる */
+  width: 100%;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 1rem;
+  text-align: center;
 }
-.menu__subtitle-decou {
-  display: inline-block;
+
+/* 下線デコを ::after で差し込む */
+.menu__subtitle::after {
+  content: "";
+  display: block;
   width: 30vw;
-  height: auto;
-  /* margin-top: -10px; */
+  /* SVG のアスペクト比に合わせて調整（例: 幅300px×高さ30pxなら300/30） */
+  aspect-ratio: 300 / 30;
+  background: url("../img/subtitle-deco-under.svg") no-repeat center/contain;
+  margin: -0.5rem auto 0;
 }
+
 @media (max-width: 768px) {
-  .menu__subtitle-decou {
+  .menu__subtitle::after {
     width: 45vw;
   }
 }
+
 
 /* テーブル風リスト */
 .menu__table {
