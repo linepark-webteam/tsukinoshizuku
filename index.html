@@ -21,6 +21,12 @@
     />
     <meta property="og:image" content="./img/hero.webp" />
 
+    <!-- Google Fonts: EB Garamond, Shippori Mincho B1, Zen Kaku Gothic New -->
+    <link
+      href="https://fonts.googleapis.com/css2? family=EB+Garamond:wght@400;600;700& family=Shippori+Mincho+B1:ital,wght@0,400;0,700;1,400& family=Zen+Kaku+Gothic+New:wght@400;500;700& display=swap"
+      rel="stylesheet"
+    />
+
     <!-- 最小 Bootstrap: レイアウト系ユーティリティのみ利用 -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
@@ -68,14 +74,13 @@
             aria-expanded="false"
             aria-controls="header-nav"
           >
-            <!-- 装飾パターンは擬似要素で差し込む -->
             <span class="header__line"></span>
             <span class="header__line"></span>
             <span class="header__line"></span>
           </button>
         </div>
 
-        <!-- ナビゲーション（オフキャンバス） -->
+        <!-- オフキャンバスメニュー -->
         <nav class="header__nav" id="header-nav" aria-hidden="true">
           <ul class="nav__list">
             <li class="nav__item">
@@ -119,22 +124,23 @@
 
       <!-- ========== Hero Section ========== -->
       <section id="hero" class="hero py-5">
-        <div class="hero__inner container">
+        <div class="hero__inner container-fluid">
           <div class="hero__visual">
-            <!-- 左：ブランドロゴ円形装飾 -->
-            <div class="hero__decor">
-              <!-- 装飾SVGを背景画像で差し込む (CSS で擬似要素化) -->
+            <!-- left: Brand-Logo + Deco -->
+            <div class="hero__decor ms-5">
               <div class="hero__decor-text">
-                <span class="hero__decor-text__tsuki">月</span
-                ><span class="hero__decor-text__no">の</span
-                ><span class="hero__decor-text__shizuku">雫</span>
+                <span class="hero__decor-text__tsuki">月</span>
+                <span class="hero__decor-text__no">の</span>
+                <span class="hero__decor-text__shizuku">雫</span>
               </div>
             </div>
 
-            <!-- 中央：キャッチコピー -->
+            <!-- center: Chatch -->
             <h1 class="hero__tagline">触れる、満ちる、整う。</h1>
+          </div>
 
-            <!-- 右：施術イメージ -->
+          <!-- right: Image -->
+          <div class="hero__media-container">
             <div class="hero__media">
               <img
                 src="./img/hero-photo.webp"
@@ -145,7 +151,7 @@
             </div>
           </div>
 
-          <!-- 下：説明文 -->
+          <!-- under: Desc -->
           <p class="hero__description">
             「月の雫」は、ハンドマッサージとストレッチを掛け合わせた二つの手技で、<br />
             滑りをゆるやかに解き、深いゆらぎへと導くサロンです。<br />

@@ -14,6 +14,9 @@
   --f-gold: #b19552;
   --f-black: #333333;
   --header-height: 72px; /* 固定ヘッダー高（アンカー補正用） */
+  --font-serif: "EB Garamond", serif;
+  --font-mincho: "Shippori Mincho", serif;
+  --font-gothic: "Zen Kaku Gothic New", sans-serif;
 }
 
 body {
@@ -61,6 +64,11 @@ body {
     var(--gradient-outer) 50%,
     var(--gradient-outer) 100%
   );
+}
+
+.container-fluid {
+  padding-left: 0;
+  padding-right: 0;
 }
 
 /* =====================================
@@ -165,8 +173,9 @@ body {
 
 /* タイトルのスタイルはそのまま */
 .section__title {
+  font-family: var(--font-mincho);
   font-size: 2rem;
-  font-weight: 600;
+  font-weight: 400;
   color: var(--f-main);
   margin-bottom: 0;
 }
@@ -220,13 +229,13 @@ body {
 
 @media (max-width: 768px) {
   .header__logo-img {
-  top: 10px;
-  left: 10px;
-  height: 50px; /* 好みで調整 */
-  width: auto;
-}
+    top: 10px;
+    left: 10px;
+    height: 50px; /* 好みで調整 */
+    width: auto;
+  }
   .header__tagline {
-    left: 55px;
+    left: 65px;
     font-size: 0.45rem;
   }
 }
@@ -291,15 +300,16 @@ body {
 /* ■ ナビゲーション（右→左に展開） */
 .header__nav {
   position: fixed;
-  top: 0; left: 0;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
-  background: #FEFCE5;
+  background: #fefce5;
   /* フェード用 */
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease;
-  z-index: 1000;   /* トグル(2000)より背面に */
+  z-index: 1000; /* トグル(2000)より背面に */
   padding: 2rem;
   overflow-y: auto;
 }
@@ -357,12 +367,17 @@ body {
    Block: Hero
 ===================================== */
 .hero {
-  background: radial-gradient(
-    ellipse at center,
+    background: radial-gradient(
+    ellipse 50% 40% at center,
     var(--gradient-center) 0%,
     var(--gradient-outer) 100%
   );
   color: #fff;
+}
+@media (max-width: 991.98px) {
+  .hero {
+    height: fit-content;
+  }
 }
 
 /* ビジュアル部分のレイアウト */
@@ -390,14 +405,14 @@ body {
 }
 /* 真ん中文字は縦書きで中央配置 */
 .hero__decor-text {
-  font-family: serif, Courier, monospace; /* はんなり明朝？ */
+  font-family: var(--font-mincho);
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   writing-mode: vertical-rl;
   text-orientation: upright;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--f-main);
   white-space: nowrap;
 }
@@ -418,22 +433,26 @@ body {
 
 /* ==== Catchphrase ==== */
 .hero__tagline {
-  flex: 1 1 auto;
+  font-family: var(--font-mincho);
   font-size: 2.5rem;
-  font-weight: 600;
+  font-weight: 400;
   text-align: center;
-  max-width: 400px;
+  width: fit-content;
+  /* max-width: 400px; */
   margin: auto 0;
 }
 
 /* ==== Media (Image) ==== */
+.hero__media-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .hero__media {
-  flex: 0 1 45%;
-  max-width: 600px;
   margin: auto 0;
-  /* 画像の境界をぼかすマスク */
   position: relative;
 }
+
 .hero__image {
   width: 100%;
   height: auto;
@@ -924,8 +943,4 @@ body {
   margin-top: calc(-1 * var(--header-height));
 }
 
-@media (max-width: 991.98px) {
-  .hero {
-    height: 80vh;
-  }
-}
+
