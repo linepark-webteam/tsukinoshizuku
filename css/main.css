@@ -20,7 +20,7 @@
 }
 
 body {
-  font-family: "Noto Sans", sans-serif;
+  font-family: var(--font-gothic);
   line-height: 1.7;
   scroll-behavior: smooth;
   background-color: var(--bg-dark);
@@ -303,8 +303,10 @@ body {
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
-  background: #fefce5;
+  /* height: 100vh; */
+  background-image: url(../img/アセット\ 10.svg);
+  background-size: cover;
+  background-position: center;
   /* フェード用 */
   opacity: 0;
   visibility: hidden;
@@ -433,13 +435,27 @@ body {
 
 /* ==== Catchphrase ==== */
 .hero__tagline {
+  position: relative;
+  z-index: 100;
   font-family: var(--font-mincho);
   font-size: 2.5rem;
   font-weight: 400;
   text-align: center;
   width: fit-content;
   /* max-width: 400px; */
-  margin: auto 0;
+  /* margin: 0; */
+  margin-bottom: auto;
+}
+
+.hero__tagline::before {
+  content: "";
+  /* position: absolute; */
+  right: 0; /* 見出しの右端に合わせる */
+  top: 0;
+  transform: translate(100%, -50%); /* 自身の幅だけ右にずらし、垂直中央 */
+  width: 50px;
+  height: 50px;
+  background: url("../img/subtitle-deco-right.svg") no-repeat center/contain;
 }
 
 /* ==== Media (Image) ==== */
@@ -454,7 +470,9 @@ body {
 }
 
 .hero__image {
-  width: 100%;
+  margin-top: -150px;
+  width: 70vw;
+  max-width: 1600px;
   height: auto;
   display: block;
   object-fit: cover;
@@ -462,7 +480,10 @@ body {
 
 /* ==== Description ==== */
 .hero__description {
-  margin-top: 3rem;
+  position: relative;
+  z-index: 100;
+  margin-top: -10rem;
+  font-family: var(--font-mincho);
   font-size: 1rem;
   line-height: 1.6;
   text-align: center;
@@ -928,6 +949,7 @@ body {
 ===================================== */
 .footer {
   background: var(--bg-yellow);
+  font-family: var(--font-mincho);
   color: var(--f-black);
   text-align: center;
   font-size: 0.875rem;
