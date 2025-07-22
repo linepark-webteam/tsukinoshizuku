@@ -126,32 +126,41 @@
       <section id="hero" class="hero">
         <div class="hero__inner container-fluid">
           <div class="hero__visual">
-            <!-- left: Brand-Logo + Deco -->
-            <div class="hero__decor ms-5">
+            <!-- ① 左：ブランドロゴ -->
+            <div class="hero__decor">
+
+
               <div class="hero__decor-text">
-                <span class="hero__decor-text__tsuki">月</span
-                ><span class="hero__decor-text__no">の</span
-                ><span class="hero__decor-text__shizuku">雫</span>
+                              <!-- 英語キャプション（ロゴの右側） -->
+              <span class="hero__decor-caption">
+                Moon Dew<br />
+                Relaxation&nbsp;|&nbsp;Lymph&nbsp;Care&nbsp;|&nbsp;Body&nbsp;Balance
+              </span>
+                <span class="hero__decor-text__tsuki">月</span>
+                <span class="hero__decor-text__no">の</span>
+                <span class="hero__decor-text__shizuku">雫</span>
               </div>
             </div>
 
-            <!-- center: Chatch -->
-            <h1 class="hero__tagline">触れる、満ちる、整う。</h1>
-          </div>
+            <!-- ② 右：キャッチ＋画像をまとめるラッパー -->
+            <div class="hero__right">
+              <!-- キャッチコピー -->
+              <h1 class="hero__tagline">触れる、満ちる、整う。</h1>
 
-          <!-- right: Image -->
-          <div class="hero__media-container">
-            <div class="hero__media">
-              <img
-                src="./img/hero-photo.webp"
-                alt="リラクゼーション施術イメージ"
-                class="hero__image"
-                loading="lazy"
-              />
+              <!-- ヒーロー画像 -->
+              <figure class="hero__media">
+                <img
+                  src="./img/hero-photo.webp"
+                  alt="リラクゼーション施術イメージ"
+                  class="hero__image"
+                  loading="lazy"
+                />
+              </figure>
             </div>
           </div>
+          <!-- /.hero__visual -->
 
-          <!-- under: Desc -->
+          <!-- 説明文 -->
           <p class="hero__description">
             「月の雫」は、ハンドマッサージとストレッチを掛け合わせた二つの手技で、<br />
             滑りをゆるやかに解き、深いゆらぎへと導くサロンです。<br />

@@ -15,7 +15,7 @@
   --f-black: #333333;
   --header-height: 72px; /* 固定ヘッダー高（アンカー補正用） */
   --font-serif: "EB Garamond", serif;
-  --font-mincho: 'Shippori Mincho B1', serif;
+  --font-mincho: "Shippori Mincho B1", serif;
   --font-gothic: "Zen Kaku Gothic New", sans-serif;
 }
 
@@ -367,7 +367,7 @@ body {
 
 /* =====================================
    Block: Hero
-===================================== */
+   ===================================== */
 .hero {
   background: radial-gradient(
     ellipse 50% 40% at center,
@@ -379,163 +379,170 @@ body {
 }
 @media (max-width: 991.98px) {
   .hero {
-    height: fit-content;
+    height: auto;
   }
 }
 
-/* ビジュアル部分のレイアウト */
+/* ─── スワール背景 ─── */
+.hero__inner {
+  position: relative;
+  z-index: 1;
+  overflow: visible;
+  background: url("../img/hero.svg") no-repeat;
+  /* ★ 円の中心がロゴ中央に来るよう微調整 */
+  background-position: left 0 top -40px;
+  background-size: 760px auto;
+}
+
+/* ─── 2 カラム (左ロゴ / 右キャッチ＋画像) ─── */
 .hero__visual {
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 2rem;
-  flex-wrap: wrap;
+  align-items: center;
+  gap: 3rem;
+  padding: 4rem 0 0;
 }
 
-/* ==== Decor (Brand Circle) ==== */
+/* ===== LEFT : Brand Logo ===== */
 .hero__decor {
+  flex: 0 0 380px;
+  height: 380px;
   position: relative;
-  width: 280px;
-  height: 280px;
-  margin: auto 0;
-}
-/* 擬似要素で円形SVG装飾を差し込む */
-.hero__decor::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: url("../img/hero-circle.svg") no-repeat center/contain;
-}
-/* 真ん中文字は縦書きで中央配置 */
-.hero__decor-text {
   font-family: var(--font-mincho);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   writing-mode: vertical-rl;
   text-orientation: upright;
-  font-weight: 500;
+  line-height: 1;
   color: var(--f-main);
-  white-space: nowrap;
 }
+
+.hero__decor-text {
+  position: absolute;
+  top: 100px;
+  left: 185px;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  line-height: 1;
+}
+/* 文字サイズを一段アップ */
 .hero__decor-text__tsuki {
   font-size: 5.5rem;
-  display: inline-block; /* transform を効かせるため */
-  position: relative; /* 基準を自要素に */
-  transform: translateX(-0.15em) translateY(0.15em);
 }
-
 .hero__decor-text__no {
-  font-size: 3.5rem;
-  display: inline-block;
-  position: relative;
-  transform: translateX(-0.25em) translateY(0.05em);
+  font-size:3.2rem;
+  transform: translateX(0) translateY(-10px);
 }
-/* 「雫」は右側に微調整 */
 .hero__decor-text__shizuku {
   font-size: 5.5rem;
-  display: inline-block;
-  position: relative;
-  /* 下の数値を適宜調整 */
-  transform: translateX(0.25em) translateY(-0.15em);
+  transform: translateX(10px) translateY(-20px);
 }
 
-/* ==== Catchphrase ==== */
+/* ★英語キャプション */
+
+.hero__decor-caption {
+  writing-mode: horizontal-tb;
+  position: absolute;
+  top: 10px;
+  left: calc(50% + 45px); /* 50% 基準＋右へ n px で微調整 */
+  transform: translateY(0%) rotate(90deg);
+  transform-origin: left top;
+  font-size: 0.3rem;
+  line-height: 1.4;
+  white-space: nowrap;
+  letter-spacing: 0.03em;
+}
+
+/* ===== RIGHT : Catch & Image ===== */
+.hero__right {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2rem;
+}
+
 .hero__tagline {
   position: relative;
-  z-index: 100;
   font-family: var(--font-mincho);
-  font-size: 2.5rem;
+  font-size: 2.6rem;
   font-weight: 400;
-  text-align: center;
-  width: fit-content;
-  /* max-width: 400px; */
   margin: 0;
-  transform: translateY(2rem);
+  white-space: nowrap;
 }
-
 .hero__tagline::before {
   content: "";
-  /* position: absolute; */
-  right: 0; /* 見出しの右端に合わせる */
-  top: 0;
-  transform: translate(100%, -50%); /* 自身の幅だけ右にずらし、垂直中央 */
-  width: 50px;
-  height: 50px;
-  background: url("../img/subtitle-deco-right.svg") no-repeat center/contain;
-}
-
-/* ==== Media (Image) ==== */
-.hero__media-container {
-  display: flex;
-  justify-content: flex-end;
+  position: absolute;
+  left: -8rem;
+  top: 50%;
+  width: 6rem;
+  height: 1px;
+  background: var(--f-main);
+  transform: translateY(-50%);
 }
 
 .hero__media {
-  margin: auto 0;
-  position: relative;
+  max-width: 560px;
+  margin-top: 0.5rem;
 }
-
 .hero__image {
-  position: relative;
-  width: 70vw;
-  max-width: 1000px;
-  height: auto;
+  width: 100%;
   display: block;
   object-fit: cover;
-  transform: translateY(-250px);
 }
 
-/* ==== Description ==== */
+/* ===== Description ===== */
 .hero__description {
-  position: relative;
-  z-index: 100;
   font-family: var(--font-mincho);
   font-size: 1rem;
-  line-height: 1.6;
+  line-height: 1.7;
   text-align: center;
   max-width: 720px;
-  margin:0 auto;
-  transform: translateY(-350px);
+  margin: 0 auto;
 }
 
-/* ==== Responsive ==== */
+/* ─── Responsive ─── */
+/* @media (max-width: 1200px) {
+  .hero__inner {
+    background-size: 640px auto;
+  }
+} */
 @media (max-width: 992px) {
-  .hero__visual {
-    gap: 1.5rem;
-  }
-  .hero__decor {
-    width: 220px;
-    height: 220px;
-  }
-  .hero__decor-text {
-    font-size: 1.75rem;
-  }
-  .hero__tagline {
-    font-size: 2rem;
-    max-width: 100%;
-  }
-}
-@media (max-width: 768px) {
   .hero__visual {
     flex-direction: column;
     text-align: center;
+    gap: 2.5rem;
   }
-  .hero__decor,
-  .hero__media {
-    order: 0;
+  .hero__decor {
+    margin: 0 auto;
+  }
+  .hero__decor-caption {
+    display: none;
+  } /* モバイルで英語行を隠す */
+  .hero__right {
+    align-items: center;
   }
   .hero__tagline {
-    order: 1;
-    margin: 1.5rem 0;
+    font-size: 2.2rem;
+    white-space: normal;
+  }
+  .hero__tagline::before {
+    display: none;
   }
   .hero__media {
-    order: 2;
-  }
-  .hero__media {
-    flex: 1 1 80%;
     max-width: 80%;
+  }
+}
+@media (max-width: 768px) {
+  .hero__inner {
+    background-position: center top 20px;
+    background-size: 480px auto;
+  }
+  .hero__decor {
+    width: 260px;
+    height: 260px;
+  }
+  .hero__tagline {
+    font-size: 1.9rem;
   }
 }
 
@@ -920,9 +927,10 @@ body {
   padding: 0.75rem 3rem;
   border: 2px solid var(--accent);
   border-radius: 50px;
+  font-family: var(--font-mincho);
   font-size: 1.125rem;
   font-weight: 600;
-  color: var(--f-main);
+  color: var(--f-gold);
   text-decoration: none;
   box-shadow: 0 0 1px var(--accent), 0 0 5px var(--accent);
   background: var(--bg-dark);
