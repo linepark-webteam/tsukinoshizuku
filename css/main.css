@@ -15,7 +15,7 @@
   --f-black: #333333;
   --header-height: 72px; /* 固定ヘッダー高（アンカー補正用） */
   --font-serif: "EB Garamond", serif;
-  --font-mincho: "Shippori Mincho", serif;
+  --font-mincho: 'Shippori Mincho B1', serif;
   --font-gothic: "Zen Kaku Gothic New", sans-serif;
 }
 
@@ -369,12 +369,13 @@ body {
    Block: Hero
 ===================================== */
 .hero {
-    background: radial-gradient(
+  background: radial-gradient(
     ellipse 50% 40% at center,
     var(--gradient-center) 0%,
     var(--gradient-outer) 100%
   );
   color: #fff;
+  height: 100vh;
 }
 @media (max-width: 991.98px) {
   .hero {
@@ -385,7 +386,7 @@ body {
 /* ビジュアル部分のレイアウト */
 .hero__visual {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 2rem;
   flex-wrap: wrap;
@@ -419,18 +420,25 @@ body {
   white-space: nowrap;
 }
 .hero__decor-text__tsuki {
-  font-size: 4.5rem;
+  font-size: 5.5rem;
+  display: inline-block; /* transform を効かせるため */
+  position: relative; /* 基準を自要素に */
+  transform: translateX(-0.15em) translateY(0.15em);
 }
+
 .hero__decor-text__no {
-  font-size: 3rem;
+  font-size: 3.5rem;
+  display: inline-block;
+  position: relative;
+  transform: translateX(-0.25em) translateY(0.05em);
 }
 /* 「雫」は右側に微調整 */
 .hero__decor-text__shizuku {
-  font-size: 4.5rem;
-  display: inline-block; /* transform を効かせるため */
-  position: relative; /* 基準を自要素に */
+  font-size: 5.5rem;
+  display: inline-block;
+  position: relative;
   /* 下の数値を適宜調整 */
-  transform: translateX(0.25em); /* 右に 0.25em 分ずらす */
+  transform: translateX(0.25em) translateY(-0.15em);
 }
 
 /* ==== Catchphrase ==== */
@@ -443,8 +451,8 @@ body {
   text-align: center;
   width: fit-content;
   /* max-width: 400px; */
-  /* margin: 0; */
-  margin-bottom: auto;
+  margin: 0;
+  transform: translateY(2rem);
 }
 
 .hero__tagline::before {
@@ -470,26 +478,26 @@ body {
 }
 
 .hero__image {
-  margin-top: -150px;
+  position: relative;
   width: 70vw;
-  max-width: 1600px;
+  max-width: 1000px;
   height: auto;
   display: block;
   object-fit: cover;
+  transform: translateY(-250px);
 }
 
 /* ==== Description ==== */
 .hero__description {
   position: relative;
   z-index: 100;
-  margin-top: -10rem;
   font-family: var(--font-mincho);
   font-size: 1rem;
   line-height: 1.6;
   text-align: center;
   max-width: 720px;
-  margin-left: auto;
-  margin-right: auto;
+  margin:0 auto;
+  transform: translateY(-350px);
 }
 
 /* ==== Responsive ==== */
@@ -964,5 +972,3 @@ body {
   height: var(--header-height);
   margin-top: calc(-1 * var(--header-height));
 }
-
-
