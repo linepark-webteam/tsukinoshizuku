@@ -298,14 +298,14 @@ body {
 }
 
 /* ===== Nav Overlay ===== */
-/* ■ ナビゲーション（右→左に展開） */
+/* ■ ナビゲーション（フェードイン） */
 .header__nav {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   /* height: 100vh; */
-  background-image: url(../img/アセット\ 10.svg);
+  background-image: url(../img/nav-bg.svg);
   background-size: cover;
   background-position: center;
   /* フェード用 */
@@ -346,6 +346,7 @@ body {
 }
 .nav__link {
   display: inline-block;
+  font-family: var(--font-mincho);
   font-size: 2rem;
   font-weight: 600;
   color: var(--f-gold);
@@ -353,6 +354,7 @@ body {
 }
 .nav__sub {
   display: block;
+  font-family: var(--font-gothic);
   font-size: 0.875rem;
   font-weight: 400;
   color: var(--f-gold);
@@ -361,6 +363,10 @@ body {
 
 /* レスポンシブ調整 */
 @media (max-width: 768px) {
+  .header__nav {
+    background-image: url(../img/nav-bg-mb.svg);
+    height: 100vh;
+  }
   .nav__link {
     font-size: 1.75rem;
   }
