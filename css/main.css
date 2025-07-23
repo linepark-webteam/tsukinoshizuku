@@ -839,6 +839,70 @@ body {
 }
 
 /* =====================================
+   Block: Interior
+   ===================================== */
+.interior{
+  background:radial-gradient(ellipse 50% 40% at center,
+              var(--gradient-center) 0%,
+              var(--gradient-outer)   100%);
+  color:#fff;
+}
+
+/* ─ タイトル周り ─ */
+.interior__icon img{display:inline-block;}
+
+.interior__title{
+  font-family:var(--font-mincho);
+  font-size:clamp(1.7rem,4vw,2.2rem);
+  text-align:center;
+  letter-spacing:.05em;
+}
+.interior__title-star{
+  font-size:1.2em;
+  margin:0 .5em;
+  color:var(--gold, #d8c57c);
+}
+
+/* ─ 本体レイアウト ─ */
+.interior__photo img,
+.interior__subphoto img{
+  width:100%;
+  height:auto;
+  object-fit:cover;
+  box-shadow:0 0 20px rgba(0,0,0,.25);
+}
+
+/* 右側パネルにスワール円を背景として付与 */
+.interior__panel{
+  padding:1rem 1rem 1rem 2rem;
+}
+.interior__panel::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:url("../img/circle.svg") no-repeat center/contain;
+  z-index:-1;               /* 背面に */
+  pointer-events:none;
+  transform:rotate(6deg);   /* 軽く傾けて動きを付ける */
+}
+
+.interior__text{
+  font-family:var(--font-mincho);
+  font-size:1rem;
+  line-height:1.7;
+}
+
+/* ─ Responsive ─ */
+@media(max-width:992px){
+  .interior__panel{padding:0 1rem;}
+  .interior__panel::before{
+    top:10px; left:-10px; right:-10px; bottom:10px;
+    background-size:110% auto;
+  }
+  .interior__text{text-align:center;}
+}
+
+/* =====================================
    Block: Therapist
 ===================================== */
 .therapist {
