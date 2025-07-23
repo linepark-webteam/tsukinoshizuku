@@ -624,16 +624,15 @@ body {
     margin: 0;
   }
 
-  /* ③ 写真自体のマスク＆ドロップシャドウ */
   .hero__image {
     width: 100%;
     height: auto;
     object-fit: cover;
   }
 
-  /* ⑤ 説明文を下にゆったり配置 */
+  /* 説明文 */
   .hero__description {
-    margin: 0 1rem 0 0;
+    margin: 0;
     font-size: 0.8rem;
     line-height: 1.6;
     text-align: end;
