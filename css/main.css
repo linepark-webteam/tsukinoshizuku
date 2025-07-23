@@ -229,13 +229,14 @@ body {
 
 @media (max-width: 768px) {
   .header__logo-img {
-    top: 10px;
+    top: 5px;
     left: 10px;
-    height: 50px; /* 好みで調整 */
+    height: 60px; /* 好みで調整 */
     width: auto;
   }
   .header__tagline {
-    left: 65px;
+    top: -3px;
+    left: 75px;
     font-size: 0.45rem;
   }
 }
