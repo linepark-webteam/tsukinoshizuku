@@ -369,29 +369,35 @@ body {
    Block: Hero
    ===================================== */
 .hero {
+  position: relative; /* 疑似要素を絶対配置するため */
   background: radial-gradient(
     ellipse 50% 40% at center,
     var(--gradient-center) 0%,
     var(--gradient-outer) 100%
   );
   color: #fff;
-  height: 100vh;
+  height: 100%;
 }
-@media (max-width: 991.98px) {
+@media (max-width: 991px) {
   .hero {
-    height: auto;
+    height: 100vh;
   }
 }
 
-/* ─── スワール背景 ─── */
-.hero__inner {
-  position: relative;
-  z-index: 1;
-  overflow: visible;
-  background: url("../img/hero.svg") no-repeat;
-  /* ★ 円の中心がロゴ中央に来るよう微調整 */
-  background-position: left 0 top -40px;
-  background-size: 760px auto;
+/* ─── スワール背景 (疑似要素) ─── */
+.hero::before {
+  content: "";
+  position: absolute;
+  /* ★ 基準点を左上に固定し自由に動かす */
+  top: -40px; /* Y 方向の微調整（貼付画像②を再現） */
+  left: 0; /* X 方向の微調整 */
+  width: 760px; /* = background-size の横幅 */
+  height: 760px; /* 正円なので同値。円以外なら auto でもOK */
+
+  background: url("../img/hero-circle.svg") no-repeat;
+  background-size: contain; /* 画像全体を収める */
+  z-index: 0; /* コンテンツの背面に置く */
+  pointer-events: none; /* マウスイベントを透過させる */
 }
 
 /* ─── 2 カラム (左ロゴ / 右キャッチ＋画像) ─── */
@@ -406,7 +412,8 @@ body {
 .hero__decor {
   flex: 0 0 380px;
   height: 380px;
-  position: relative;
+  position: absolute;
+  top: 255px;
   font-family: var(--font-mincho);
   writing-mode: vertical-rl;
   text-orientation: upright;
@@ -416,7 +423,7 @@ body {
 
 .hero__decor-text {
   position: absolute;
-  top: 100px;
+  top: 15px;
   left: 185px;
   transform: translate(-50%, -50%);
   display: flex;
@@ -429,7 +436,7 @@ body {
   font-size: 5.5rem;
 }
 .hero__decor-text__no {
-  font-size:3.2rem;
+  font-size: 3.2rem;
   transform: translateX(0) translateY(-10px);
 }
 .hero__decor-text__shizuku {
@@ -458,18 +465,17 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 2rem;
 }
 
 .hero__tagline {
   position: relative;
   font-family: var(--font-mincho);
-  font-size: 2.6rem;
+  font-size: clamp(1.8rem, 3vw, 2rem);
   font-weight: 400;
   margin: 0;
   white-space: nowrap;
 }
-.hero__tagline::before {
+.tagline-part.l1::before {
   content: "";
   position: absolute;
   left: -8rem;
@@ -479,13 +485,13 @@ body {
   background: var(--f-main);
   transform: translateY(-50%);
 }
-
-.hero__media {
-  max-width: 560px;
-  margin-top: 0.5rem;
+.tagline-part {
+  display: inline;
 }
+
 .hero__image {
-  width: 100%;
+  width: 70vw;
+  max-width: 800px;
   display: block;
   object-fit: cover;
 }
@@ -497,52 +503,151 @@ body {
   line-height: 1.7;
   text-align: center;
   max-width: 720px;
-  margin: 0 auto;
+  margin: -100px auto auto;
 }
 
-/* ─── Responsive ─── */
-/* @media (max-width: 1200px) {
-  .hero__inner {
-    background-size: 640px auto;
+/* 991px 以下：スマホレイアウト ------------------------------------ */
+@media (max-width: 991px) {
+  /* スワール背景の調整 */
+  .hero::before {
+    content: "";
+    position: absolute;
+    /* ★ 基準点を左上に固定し自由に動かす */
+    top: 0; /* Y 方向の微調整（貼付画像②を再現） */
+    left: -10px; /* X 方向の微調整 */
+    width: 100vw; /* 画面幅いっぱいに変更 */
+    height: 600px; /* 高さ固定 */
+
+    background: url("../img/hero-circle-mb.svg") no-repeat; /*モバイル用に差し替え*/
+    background-size: contain; /* 画像全体を収める */
+    z-index: 0; /* コンテンツの背面に置く */
+    pointer-events: none; /* マウスイベントを透過させる */
   }
-} */
-@media (max-width: 992px) {
+
+  /* ① ビジュアル行は横並び（row）のまま */
   .hero__visual {
-    flex-direction: column;
-    text-align: center;
-    gap: 2.5rem;
+    flex-direction: row;
+    align-items: flex-start; /* 円と見出しの上端を揃える */
+    gap: 1.2rem;
+    padding: 2.2rem 0 0;
   }
+
+  /* ② 円ロゴを小さくしてインライン要素化 */
   .hero__decor {
-    margin: 0 auto;
+    position: static; /* 絶対配置→通常フローに戻す */
+    flex: 0 0 200px;
+    width: 200px;
+    height: 200px;
+    margin: 0; /* centering 削除 */
+  }
+  .hero__decor-text {
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    line-height: 1;
+  }
+  /* 文字サイズ */
+  .hero__decor-text__tsuki {
+    font-size: 3.5rem;
+  }
+  .hero__decor-text__no {
+    font-size: 2.2rem;
+    transform: translateX(0) translateY(-10px);
+  }
+  .hero__decor-text__shizuku {
+    font-size: 3.5rem;
+    transform: translateX(15px) translateY(-15px);
   }
   .hero__decor-caption {
-    display: none;
-  } /* モバイルで英語行を隠す */
+    top: 5px;
+    left: calc(50% + 30px); /* 50% 基準＋右へ n px で微調整 */
+    transform-origin: left top;
+    font-size: 0.2rem;
+  }
+
+  /* ③ キャッチコピーを右に (折り返し可) */
   .hero__right {
-    align-items: center;
-  }
+    align-items: flex-start;
+  } /* 左寄せ */
+
+  /* h1 本体を行末（右端）へ押し出し */
   .hero__tagline {
-    font-size: 2.2rem;
-    white-space: normal;
+    /* ヒーロー右カラムの中で右に寄せる */
+    align-self: flex-end; /* flex-item レベル */
+    margin-left: auto; /* 余白を左へ押しやる */
+    display: flex; /* 3 行を縦積み */
+    flex-direction: column;
+    align-items: flex-end; /* 右端で文字揃え */
+    text-align: right; /* 文字自体も右揃え */
+    position: relative; /* 飾り線の基準にする */
+    gap: 0.2em; /* 行間（好みで調整） */
   }
-  .hero__tagline::before {
-    display: none;
+
+  /* 各 <span> を block 要素にして改行 */
+  .tagline-part {
+    display: block;
   }
+  /* 2 行目・3 行目を少しずつ “右奥” へずらす
+     ─ right padding を増やすことで階段状に */
+  .tagline-part.l1 {
+    padding-right: 2em; /* ← 好みに応じ微調整 */
+  } 
+  .tagline-part.l2 {
+    padding-right: 1em; /* ← 好みに応じ微調整 */
+  }
+  .tagline-part.l3 {
+    padding-right: 0; /* ← 好みに応じ微調整 */
+  }
+  /* 飾り線 ─ 1 行目の左側にだけ表示 */
+  .tagline-part.l1 {
+    position: relative; /* ::before の基準 */
+  }
+  .tagline-part.l1::before {
+    content: "";
+    position: absolute;
+    left: -5rem; /* 行頭の直前 */
+    top: 50%;
+    width: 4rem; /* 線の長さ */
+    height: 1px;
+    background: var(--f-main);
+    transform: translateY(-50%);
+  }
+
+  /* ④ 画像はビジュアル行の次の行として 100% 幅 */
   .hero__media {
-    max-width: 80%;
+    width: 100%;
+    max-width: none;
+    margin-top: 1.5rem;
   }
-}
-@media (max-width: 768px) {
-  .hero__inner {
-    background-position: center top 20px;
-    background-size: 480px auto;
+
+
+    /* ② 画像を絶対配置して拡大・中央寄りへ */
+  .hero__media{
+    position:absolute;
+    top:150px;                  /* ← 円ロゴ下端辺り。好みで ±10-20px */
+    right:0;                   /* 画面右からの距離。中央寄せなら 5–8% が目安 */
+    width:70vw;                 /* 55% 幅に拡大（バランスを見て 50–60 に調整） */
+    z-index:0;                  /* 奥側へ（テキストより背面） */
+    overflow: hidden;
   }
-  .hero__decor {
-    width: 260px;
-    height: 260px;
+
+  /* ③ 写真自体のマスク＆ドロップシャドウ */
+  .hero__image{
+    width:100%;
+    height:auto;
+    object-fit:cover;
   }
-  .hero__tagline {
-    font-size: 1.9rem;
+
+
+  /* ⑤ 説明文を下にゆったり配置 */
+  .hero__description {
+    margin: 2rem 1rem 0;
+    font-size: 0.9rem;
+    line-height: 1.6;
   }
 }
 
@@ -642,8 +747,8 @@ body {
   border-bottom: dotted;
 }
 
-/* スマホ縦並び */
-@media (max-width: 768px) {
+/* 991px以下 縦並び */
+@media (max-width: 991px) {
   .service__content,
   .service__item--reverse .service__content {
     flex-direction: column;
@@ -886,8 +991,8 @@ body {
   color: var(--f-main);
 }
 
-/* モバイル縦並び */
-@media (max-width: 768px) {
+/* 991px以下 縦並び */
+@media (max-width: 991px) {
   .salon-info__content {
     flex-direction: column-reverse;
     align-items: center;
