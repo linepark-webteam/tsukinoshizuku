@@ -326,38 +326,33 @@
           <div class="interior__header section__header mb-5">
             <h2 class="interior__title section__title">Interior</h2>
           </div>
-
-          <!-- ── 2カラム本体 ───────────────────── -->
-          <div class="interior__body row justify-content-center g-4">
-            <!-- 左：大きなインテリア写真 -->
-            <figure class="interior__photo col-lg-5 col-12">
-              <img
-                src="./img/interior-main.webp"
-                class="img-fluid"
-                alt="施術ルーム"
-                loading="lazy"
-              />
-            </figure>
-
-            <!-- 右：円形スワール＋サブ写真＋テキスト -->
-            <div class="interior__panel col-lg-5 col-12">
-              <!-- スワール円は CSS 疑似要素で -->
-              <figure class="interior__subphoto mb-3">
+          <div class="interior__body container">
+            <!-- ★ ラッパー：円スワールを貼る基準要素 -->
+            <div class="interior__wrap">
+              <!-- 左：大きい写真 -->
+              <figure class="interior__photo">
                 <img
-                  src="./img/interior-candle.webp"
-                  class="img-fluid"
-                  alt="キャンドルの写真"
+                  src="./img/interior-main.webp"
+                  alt="施術ルーム"
                   loading="lazy"
                 />
               </figure>
-              <p class="interior__text">
-                木目の壁とやさしい灯りに包まれた<br />
-                落ち着きのある空間です。<br />
-                施術ベッドのある個室では、<br />
-                まわりを気にせず、ゆっくりとリラックスしていただけます。
-              </p>
-            </div>
-          </div>
+
+              <!-- 右：サブ写真＋テキスト -->
+              <div class="interior__panel">
+                <figure class="interior__subphoto">
+                  <img
+                    src="./img/interior-candle.webp"
+                    alt="キャンドル"
+                    loading="lazy"
+                  />
+                </figure>
+                <p class="interior__text">木目の壁とやさしい灯りに包まれた、落ち着きのある空間です。<br>
+                施術ベッドのある個室では、<br>
+              まわりを気にせず、ゆっくりとリラックスしていただけます。</p>
+              </div>
+            </div><!-- /.interior__wrap -->
+          </div><!-- /.interior__body -->
         </div>
       </section>
 
@@ -494,11 +489,8 @@
 
           <!-- 注釈リンク -->
           <p class="contact__note">
-            お電話・メールでのご予約・お問い合わせを希望の方は
-            <a href="mailto:info@example.com" class="contact__note-link"
-              >こちら</a
-            >
-            よりお願いします。
+            お電話・メールでのご予約・お問い合わせを希望の方は<br />
+            下記よりお願いします。
           </p>
         </div>
       </section>

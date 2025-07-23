@@ -840,7 +840,9 @@ body {
 
 /* =====================================
    Block: Interior
-   ===================================== */
+===================================== */
+
+/* ■ セクション背景・文字色 */
 .interior {
   background: radial-gradient(
     ellipse 50% 40% at center,
@@ -850,7 +852,7 @@ body {
   color: #fff;
 }
 
-/* ─ タイトル周り ─ */
+/* ───── タイトル周辺 ───── */
 .interior__icon img {
   display: inline-block;
 }
@@ -867,7 +869,37 @@ body {
   color: var(--gold, #d8c57c);
 }
 
-/* ─ 本体レイアウト ─ */
+/* ───── 2 カラム本体 ───── */
+.interior__wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 3rem;
+  position: relative; /* 円スワール基準 */
+  z-index: 0;
+}
+
+/* 円スワール（circle.svg） */
+.interior__wrap::before {
+  content: "";
+  position: absolute;
+  top: 35%; /* 適度に写真へ被せる */
+  right: 0;
+  width: 580px;
+  height: 580px;
+  background: url("../img/circle.svg") no-repeat center/contain;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* 左：メイン写真 */
+.interior__photo {
+  flex: 0 0 50%;
+  max-width: 500px;
+  margin: 0;
+}
 .interior__photo img {
   width: 100%;
   height: auto;
@@ -875,47 +907,77 @@ body {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
 }
 
-/* 右側パネルにスワール円を背景として付与 */
+/* 右：サブ写真＋テキスト */
 .interior__panel {
-  position: relative;
-  padding: 1rem 1rem 1rem 2rem;
+  flex: 1 1 40%;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transform: translateY(25px);
 }
-.interior__panel::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: url("../img/circle.svg") no-repeat center/contain;
-  z-index: 0;
-  pointer-events: none;
+.interior__subphoto {
+  margin: 0;
 }
 .interior__subphoto img {
-  position: relative;
-  z-index: 10;
   width: 100%;
   height: auto;
   object-fit: cover;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
 }
 .interior__text {
   font-family: var(--font-gothic);
   font-size: 1rem;
   line-height: 1.7;
+  margin: 0;
 }
 
-/* ─ Responsive ─ */
-@media (max-width: 992px) {
-  .interior__panel {
-    padding: 0 1rem;
+/* ───── Responsive ───── */
+
+/* 991px 以下：2 カラム幅を狭める / 円を縮小 */
+@media (max-width: 991px) {
+  .interior__wrap {
+    gap: 1.5rem;
   }
-  .interior__panel::before {
-    top: 10px;
-    left: -10px;
-    right: -10px;
-    bottom: 10px;
-    background-size: 110% auto;
+  .interior__wrap::before {
+    width: 550px;
+    height: 550px;
+    top: 10%;
+    right: -25px;
+  }
+  .interior__photo {
+    flex: 0 0 45%;
+  }
+  .interior__panel {
+    flex: 1 1 30%;
+    max-width: 250px;
+  }
+}
+
+@media (max-width: 500px) {
+  .interior__wrap {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 0.875rem;
+  }
+  .interior__wrap::before {
+    width: 300px;
+    height: 300px;
+    top: 10%;
+    right: -25px;
+  }
+  .interior__photo {
+    flex: 0 0 45%;
+  }
+  .interior__panel {
+    flex: 1 1 30%;
+    max-width: 150px;
+    transform: translateY(50px);
   }
   .interior__text {
-    text-align: center;
+    font-size: 0.6rem;
+    line-height: 1.5;
   }
 }
 
@@ -992,7 +1054,7 @@ body {
 
 /* 説明文 */
 .therapist__desc {
-  font-size: 0.875rem;
+  font-size: 0.8rem;
   line-height: 1.6;
   color: #eee;
 }
@@ -1080,6 +1142,8 @@ body {
     flex: 1 1 100%;
     width: 100%;
     max-width: 400px;
+  }
+  .salon-info__map {
     aspect-ratio: 1 / 1;
   }
 }
