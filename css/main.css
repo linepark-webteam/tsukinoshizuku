@@ -380,7 +380,7 @@ body {
 }
 @media (max-width: 991px) {
   .hero {
-    height: 100vh;
+    height: auto;
   }
 }
 
@@ -514,7 +514,7 @@ body {
     position: absolute;
     /* ★ 基準点を左上に固定し自由に動かす */
     top: 0; /* Y 方向の微調整（貼付画像②を再現） */
-    left: -10px; /* X 方向の微調整 */
+    left: 0; /* X 方向の微調整 */
     width: 100vw; /* 画面幅いっぱいに変更 */
     height: 600px; /* 高さ固定 */
 
@@ -535,7 +535,7 @@ body {
   /* ② 円ロゴを小さくしてインライン要素化 */
   .hero__decor {
     position: static; /* 絶対配置→通常フローに戻す */
-    flex: 0 0 200px;
+    flex: 0 0 0;
     width: 200px;
     height: 200px;
     margin: 0; /* centering 削除 */
@@ -543,7 +543,7 @@ body {
   .hero__decor-text {
     position: absolute;
     top: 100px;
-    left: 100px;
+    left: 105px;
     transform: translate(-50%, -50%);
     display: flex;
     flex-direction: row;
@@ -569,11 +569,6 @@ body {
     font-size: 0.2rem;
   }
 
-  /* ③ キャッチコピーを右に (折り返し可) */
-  .hero__right {
-    align-items: flex-start;
-  } /* 左寄せ */
-
   /* h1 本体を行末（右端）へ押し出し */
   .hero__tagline {
     /* ヒーロー右カラムの中で右に寄せる */
@@ -595,7 +590,7 @@ body {
      ─ right padding を増やすことで階段状に */
   .tagline-part.l1 {
     padding-right: 2em; /* ← 好みに応じ微調整 */
-  } 
+  }
   .tagline-part.l2 {
     padding-right: 1em; /* ← 好みに応じ微調整 */
   }
@@ -617,37 +612,31 @@ body {
     transform: translateY(-50%);
   }
 
-  /* ④ 画像はビジュアル行の次の行として 100% 幅 */
+  /* 画像配置 拡大 */
   .hero__media {
-    width: 100%;
+    position: relative;
+    top: 0;
+    right: 0;
+    width: 70vw;
     max-width: none;
-    margin-top: 1.5rem;
-  }
-
-
-    /* ② 画像を絶対配置して拡大・中央寄りへ */
-  .hero__media{
-    position:absolute;
-    top:150px;                  /* ← 円ロゴ下端辺り。好みで ±10-20px */
-    right:0;                   /* 画面右からの距離。中央寄せなら 5–8% が目安 */
-    width:70vw;                 /* 55% 幅に拡大（バランスを見て 50–60 に調整） */
-    z-index:0;                  /* 奥側へ（テキストより背面） */
+    z-index: 0;
     overflow: hidden;
+    margin: 0;
   }
 
   /* ③ 写真自体のマスク＆ドロップシャドウ */
-  .hero__image{
-    width:100%;
-    height:auto;
-    object-fit:cover;
+  .hero__image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
   }
-
 
   /* ⑤ 説明文を下にゆったり配置 */
   .hero__description {
-    margin: 2rem 1rem 0;
-    font-size: 0.9rem;
+    margin: 0 1rem 0;
+    font-size: 0.8rem;
     line-height: 1.6;
+    text-align: end;
   }
 }
 
