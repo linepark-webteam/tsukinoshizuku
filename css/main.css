@@ -632,6 +632,8 @@ body {
 
   /* 説明文 */
   .hero__description {
+    position: relative;
+    z-index: 100;
     margin: 0;
     font-size: 0.8rem;
     line-height: 1.6;
