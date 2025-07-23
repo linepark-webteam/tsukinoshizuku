@@ -940,9 +940,9 @@ body {
     gap: 1.5rem;
   }
   .interior__wrap::before {
-    width: 550px;
-    height: 550px;
-    top: 10%;
+    width: 425px;
+    height: 425px;
+    top: 20%;
     right: -25px;
   }
   .interior__photo {
@@ -962,8 +962,8 @@ body {
     gap: 0.875rem;
   }
   .interior__wrap::before {
-    width: 300px;
-    height: 300px;
+    width: 250px;
+    height: 250px;
     top: 10%;
     right: -20px;
   }
