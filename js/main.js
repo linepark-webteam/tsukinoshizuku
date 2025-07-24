@@ -89,4 +89,21 @@ document.addEventListener("DOMContentLoaded", () => {
       closeNav();
     }
   });
+
+    /* ---------- Hero animation ---------- */
+  const heroSection = document.getElementById("hero");
+
+  const heroObserver = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          heroSection.classList.add("is-animated");
+          heroObserver.unobserve(heroSection); // 1 回だけ発火
+        }
+      });
+    },
+    { threshold: 0.3 } // 30% ほど画面に入ったら
+  );
+
+  heroObserver.observe(heroSection);
 });

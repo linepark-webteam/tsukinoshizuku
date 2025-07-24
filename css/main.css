@@ -648,6 +648,59 @@ body {
   }
 }
 
+/* ===== Hero animation ===== */
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* 初期状態を非表示に */
+.hero__decor-text__tsuki {
+  opacity: 0;
+}
+.hero__decor-text__no {
+  opacity: 0;
+  transform: translateX(0) translateY(-10px);
+}
+.hero__decor-text__shizuku {
+  opacity: 0;
+  transform: translateX(10px) translateY(-20px);
+}
+
+.tagline-part,
+.hero__image {
+  opacity: 0;
+}
+
+/* .is-animated が付いたら順番に再生 */
+.hero.is-animated .hero__decor-text__tsuki {
+  animation: fadeUp 0.6s 0s forwards;
+}
+.hero.is-animated .hero__decor-text__no {
+  animation: fadeUp 0.6s 0.4s forwards;
+}
+.hero.is-animated .hero__decor-text__shizuku {
+  animation: fadeUp 0.6s 0.8s forwards;
+}
+
+.hero.is-animated .tagline-part.l1 {
+  animation: fadeUp 0.6s 1.0s forwards;
+}
+.hero.is-animated .tagline-part.l2 {
+  animation: fadeUp 0.6s 1.4s forwards;
+}
+.hero.is-animated .tagline-part.l3 {
+  animation: fadeUp 0.6s 1.8s forwards;
+}
+
+.hero.is-animated .hero__image {
+  animation: fadeUp 0.6s 0s forwards;
+}
+
 /* =====================================
    Block: Service
 ===================================== */
@@ -1202,7 +1255,7 @@ body {
 }
 .contact__items {
   font-family: var(--font-gothic);
-  
+
   font-size: 1.2rem;
 }
 .contact__items a {
