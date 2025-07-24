@@ -106,4 +106,35 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
   heroObserver.observe(heroSection);
+
+  /* ==================================================
+   Fade-in on scroll  (utility for .fadeIn elements)
+   ================================================== */
+const fadeTargets = document.querySelectorAll(".fadeIn");
+
+const fadeObserver = new IntersectionObserver(
+  entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+
+        /* data-delay に応じて遅延設定（未指定なら 0 秒） */
+        const delay = el.dataset.delay || 0;
+        el.style.transitionDelay = `${delay}s`;
+
+        /* 表示クラス付与 → CSS でフェードイン */
+        el.classList.add("is-visible");
+
+        /* 1 回表示したら監視解除（パフォーマンス向上） */
+        fadeObserver.unobserve(el);
+      }
+    });
+  },
+  {
+    threshold: 0.2 // 20% 以上見えたら発火
+  }
+);
+
+/* 監視開始 */
+fadeTargets.forEach(el => fadeObserver.observe(el));
 });
