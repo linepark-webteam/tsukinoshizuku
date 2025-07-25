@@ -1181,8 +1181,7 @@ body {
   letter-spacing: 0.05em;
   text-decoration: none;
   border-radius: 50px;
-  border: 2px solid var(--accent); /* #b19552 */
-
+  border: 2px solid var(--accent);
   /* Color & Background ------------------------------------ */
   /* ─ グラデーションを 4 段で構成：上→下へ徐々にトーンを落とす ─ */
   background: linear-gradient(
