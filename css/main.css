@@ -25,6 +25,7 @@ body {
   scroll-behavior: smooth;
   background-color: var(--bg-dark);
   color: var(--f-main);
+  font-weight: 500;
 }
 
 /* =====================================
@@ -670,6 +671,7 @@ body {
 .service__subtitle {
   position: relative; /* 擬似要素の位置指定に必要 */
   display: inline-block; /* テキスト幅に合わせる */
+  font-family: var(--font-mincho);
   font-size: 1.5rem;
   font-weight: 600;
   color: var(--f-main);
@@ -823,7 +825,8 @@ body {
 }
 .menu__duration,
 .menu__price {
-  color: #333;
+  color: var(--bg-dark);
+  font-weight: 600;
   font-size: 1rem;
 }
 .menu__price {
