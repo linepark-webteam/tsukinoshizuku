@@ -99,13 +99,13 @@ body {
   /* 擬似要素をテキスト中央揃えの幅に */
   text-align: center;
   position: relative; /* ::before の配置領域に */
+  z-index: 50; /* セクションとの重なりを考慮し、少し手前に配置 */
 }
 
 /* 擬似要素で SVG を差し込む */
 .sepa::before {
   content: "";
   display: inline-block;
-  /* 幅は元の img と同じ比率で 10vw */
   width: 10vw;
   /* アスペクト比を画像に合わせて指定 (例: 幅200px 高さ20px の場合 ratio 10/1 = 200/20) */
   /* 実際の sepa.svg のサイズに合わせて調整 */
