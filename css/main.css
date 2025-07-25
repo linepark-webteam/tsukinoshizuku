@@ -95,7 +95,6 @@ body {
    Component: Separater
 ===================================== */
 .sepa {
-  /* セパレーター上下の余白 */
   /* 擬似要素をテキスト中央揃えの幅に */
   text-align: center;
   position: relative; /* ::before の配置領域に */
@@ -107,8 +106,7 @@ body {
   content: "";
   display: inline-block;
   width: 10vw;
-  /* アスペクト比を画像に合わせて指定 (例: 幅200px 高さ20px の場合 ratio 10/1 = 200/20) */
-  /* 実際の sepa.svg のサイズに合わせて調整 */
+  /* アスペクト比を画像に合わせて指定 (例: 幅200px 高さ20px の場合 ratio 10/1 = 200/20) sepa.svg のサイズに合わせて調整  */
   aspect-ratio: 2 / 1;
   background: url("../img/sepa.svg") no-repeat center/contain;
 }
@@ -159,7 +157,7 @@ body {
 .section__header::after {
   content: "";
   display: inline-block;
-  width: 20px; /* 元の SVG サイズに合わせて調整 */
+  width: 20px; /* SVG サイズに合わせて調整 */
   height: 20px; /* auto でもOK */
   background: url("../img/title-deco.svg") no-repeat center/contain;
 }
@@ -172,7 +170,7 @@ body {
   margin-left: 0.5rem;
 }
 
-/* タイトルのスタイルはそのまま */
+/* タイトルのスタイル */
 .section__title {
   font-family: var(--font-mincho);
   font-size: 2rem;
@@ -187,7 +185,7 @@ body {
 /* ヘッダー全体 */
 .header {
   position: static;
-  background: var(--bg-yellow); /* スクロールで色変わるなら main.js 制御 */
+  background: var(--bg-yellow);
 }
 
 /* 内部コンテナ */
@@ -211,7 +209,7 @@ body {
   top: 0;
   left: 20px;
   display: block;
-  height: 72px; /* 好みで調整 */
+  height: 72px; /* 調整可 */
   width: 72px;
 }
 
@@ -232,7 +230,7 @@ body {
   .header__logo-img {
     top: 5px;
     left: 10px;
-    height: 60px; /* 好みで調整 */
+    height: 60px; /* 調整可 */
     width: auto;
   }
   .header__tagline {
@@ -273,8 +271,7 @@ body {
   background: var(--f-gold);
   transform: translateX(-50%);
   transform-origin: center;
-  transition: transform 0.4s ease,
-    /* 回転＋移動に 0.4s */ opacity 0.2s ease 0.1s; /* 真ん中の線はフェード */
+  transition: transform 0.4s ease, opacity 0.2s ease 0.1s;
   z-index: 1;
 }
 .header__line:nth-child(1) {
@@ -439,7 +436,7 @@ body {
   align-items: center;
   line-height: 1;
 }
-/* 文字サイズを一段アップ */
+/* 「月」「の」「雫」それぞれの文字サイズと位置 */
 .hero__decor-text__tsuki {
   font-size: 5.5rem;
 }
@@ -453,12 +450,11 @@ body {
 }
 
 /* ★英語キャプション */
-
 .hero__decor-caption {
   writing-mode: horizontal-tb;
   position: absolute;
   top: 10px;
-  left: calc(50% + 45px); /* 50% 基準＋右へ n px で微調整 */
+  left: calc(50% + 45px); /* 50% 基準＋右へ px で微調整 */
   transform: translateY(0%) rotate(90deg);
   transform-origin: left top;
   font-size: 0.3rem;
@@ -558,7 +554,7 @@ body {
     align-items: center;
     line-height: 1;
   }
-  /* 文字サイズ */
+
   .hero__decor-text__tsuki {
     font-size: 3.5rem;
   }
@@ -572,7 +568,7 @@ body {
   }
   .hero__decor-caption {
     top: 5px;
-    left: calc(50% + 30px); /* 50% 基準＋右へ n px で微調整 */
+    left: calc(50% + 30px); /* 50% 基準＋右へ px で微調整 */
     transform-origin: left top;
     font-size: 0.2rem;
   }
@@ -1185,55 +1181,49 @@ body {
   letter-spacing: 0.05em;
   text-decoration: none;
   border-radius: 50px;
-  border: 2px solid var(--accent);          /* #b19552 */
+  border: 2px solid var(--accent); /* #b19552 */
 
   /* Color & Background ------------------------------------ */
   /* ─ グラデーションを 4 段で構成：上→下へ徐々にトーンを落とす ─ */
   background: linear-gradient(
     145deg,
-    #8a7444 0%,                          /* 明るいベージュ */
-    #9b6d00 35%,                         /* 柔らかい金茶 */
-    #9b6d00 65%,                         /* アクセントゴールド */
-    #8a7444 100%                         /* 深いアンバー */
+    #8a7444 0%,
+    /* 明るいベージュ */ #9b6d00 35%,
+    /* 柔らかい金茶 */ #9b6d00 65%,
+    /* アクセントゴールド */ #8a7444 100% /* 深いアンバー */
   );
-  color: #fff;                              /* 高コントラスト */
+  color: #fff; /* 高コントラスト */
 
   /* Glow -------------------------------------------------- */
   /* 内側は細く / 外側は淡く広く → 控えめに光らせる */
-  box-shadow:
-    0 0 4px 1px rgba(177, 149, 82, 0.8),
+  box-shadow: 0 0 4px 1px rgba(177, 149, 82, 0.8),
     0 0 12px 5px rgba(177, 149, 82, 0.35);
 
   text-shadow: 0 0 3px rgba(0, 0, 0, 0.6);
 
   /* Transition ------------------------------------------- */
-  transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease,
-    filter 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
 }
 
 /* Hover / Focus ------------------------------------------ */
 .contact__cta:hover,
 .contact__cta:focus-visible {
   transform: translateY(-3px) scale(1.03);
-  filter: brightness(1.05);                /* 光量をほんのり増加 */
-  box-shadow:
-    0 0 6px 2px rgba(177, 149, 82, 0.9),
+  filter: brightness(1.05); /* 光量をほんのり増加 */
+  box-shadow: 0 0 6px 2px rgba(177, 149, 82, 0.9),
     0 0 20px 8px rgba(177, 149, 82, 0.55);
 }
 
 /* Active -------------------------------------------------- */
 .contact__cta:active {
   transform: translateY(-1px) scale(0.98);
-  box-shadow:
-    0 0 3px 1px rgba(177, 149, 82, 0.7),
+  box-shadow: 0 0 3px 1px rgba(177, 149, 82, 0.7),
     0 0 8px 3px rgba(177, 149, 82, 0.4);
 }
 
 /* Keyboard Outline --------------------------------------- */
 .contact__cta:focus-visible {
-  outline: 2px dashed var(--accent);       /* #b19552 */
+  outline: 2px dashed var(--accent); /* #b19552 */
   outline-offset: 4px;
 }
 
@@ -1247,7 +1237,6 @@ body {
     transform: none;
   }
 }
-
 
 /* 注釈リンク */
 .contact__note {
