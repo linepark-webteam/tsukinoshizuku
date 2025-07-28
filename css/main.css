@@ -519,7 +519,7 @@ body {
     /* ★ 基準点を左上に固定し自由に動かす */
     top: 0; /* Y 方向の微調整（貼付画像②を再現） */
     left: 0; /* X 方向の微調整 */
-    width: 100vw; /* 画面幅いっぱいに変更 */
+    width: 100%; /* 画面幅いっぱいに変更 */
     height: 600px; /* 高さ固定 */
 
     background: url("../img/hero-circle-mb.svg") no-repeat; /*モバイル用に差し替え*/
