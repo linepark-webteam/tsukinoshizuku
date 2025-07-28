@@ -817,7 +817,7 @@ body {
   padding: 1rem 1.5rem;
 }
 .menu__row + .menu__row {
-  border-top: 1px solid var(--accent);
+  border-top: 3px solid var(--accent);
 }
 .menu__duration,
 .menu__price {
