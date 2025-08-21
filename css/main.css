@@ -1270,6 +1270,107 @@ body {
   }
 }
 
+
+/* =====================================
+   Floating FABs – image version
+   HTML順：Instagram → LINE
+   見た目：Instagram（上）／LINE（下）
+===================================== */
+
+/* 共通サイズ・余白 */
+:root{
+  --fab-size: 56px;   /* FABの一辺 */
+  --fab-gap: 12px;    /* FAB同士の縦間隔 */
+  --fab-edge: 14px;   /* 画面端からのオフセット */
+}
+@media (max-width: 480px){
+  :root{ --fab-size: 54px; }
+}
+
+/* ===== Instagram（上に来る） =====
+   ※ 下のLINEを“基準”にし、その分だけ持ち上げる */
+.ig-fab{
+  position: fixed;
+  right: calc(max(var(--fab-edge), env(safe-area-inset-right, var(--fab-edge))));
+  bottom: calc(
+    max(var(--fab-edge), env(safe-area-inset-bottom, var(--fab-edge)))
+    + var(--fab-size) + var(--fab-gap)
+  );
+  z-index: 900;
+  width: var(--fab-size);
+  height: var(--fab-size);
+  border-radius: 12px;
+  overflow: hidden;
+  display: block;
+  text-decoration: none;
+  color: #fff;
+  background: none;                          /* 画像版：背景なし */
+  box-shadow: 0 6px 16px rgba(0,0,0,.3);
+  transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+  will-change: transform;
+}
+.ig-fab img{
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;                          /* 画像を全面に */
+  border-radius: inherit;
+  pointer-events: none;
+}
+.ig-fab:hover,
+.ig-fab:focus-visible{
+  transform: translateY(-2px) scale(1.03);
+  filter: brightness(1.03);
+  box-shadow: 0 10px 24px rgba(0,0,0,.35);
+  outline: none;
+}
+.ig-fab:active{ transform: translateY(0) scale(0.98); }
+
+/* ===== LINE（下：基準の位置） ===== */
+.line-fab{
+  position: fixed;
+  right: calc(max(var(--fab-edge), env(safe-area-inset-right, var(--fab-edge))));
+  bottom: calc(max(var(--fab-edge), env(safe-area-inset-bottom, var(--fab-edge))));
+  z-index: 900;
+  width: var(--fab-size);
+  height: var(--fab-size);
+  border-radius: 12px;
+  overflow: hidden;
+  display: block;
+  text-decoration: none;
+  color: #fff;
+  background: none;
+  box-shadow: 0 6px 16px rgba(0,0,0,.3);
+  transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+  will-change: transform;
+}
+.line-fab img{
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+  pointer-events: none;
+}
+.line-fab:hover,
+.line-fab:focus-visible{
+  transform: translateY(-2px) scale(1.03);
+  filter: brightness(1.03);
+  box-shadow: 0 10px 24px rgba(0,0,0,.35);
+  outline: none;
+}
+.line-fab:active{ transform: translateY(0) scale(0.98); }
+
+/* アニメ軽減 */
+@media (prefers-reduced-motion: reduce){
+  .ig-fab, .ig-fab:hover, .ig-fab:focus-visible, .ig-fab:active,
+  .line-fab, .line-fab:hover, .line-fab:focus-visible, .line-fab:active{
+    transition: none;
+    transform: none;
+  }
+}
+
+
 /* =====================================
    Block: Footer
 ===================================== */
